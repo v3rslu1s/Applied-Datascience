@@ -82,24 +82,28 @@ The ‘raw data’ contains the position in a 3D space for a single bone. This c
 
 To tackle these issues the LUMC implemented the script to calculate the rotation angle between bones. This would mean movements would be preserved, but the recording environment / bone lengths do not have influence anymore. 
 
-The mirrored body is split in to multiple bones, where each bone is represented by 3 axis to define its rotation in space. 
+The limbs of a human body are mirrored. So we use the same latin names for each bone and define the side by adding it into the name ```_l_``` or ```_r_```. Each bone is represented by 3 axis to define its rotation in space defined as euler angles. 
+
 - thorax
 - clavicula
 - scapula
 - humerus
-- elbow angle
-
+- elbowangle
 
 ```
-   thorax_r_x_ext  thorax_r_y_ax  thorax_r_z_lat  clavicula_r_y_pro  clavicula_r_z_ele  ...  humerus_l_z_ele  humerus_l_y_ax  ellebooghoek_l  28  29
+   thorax_r_x_ext  thorax_r_y_ax  thorax_r_z_lat  clavicula_r_y_pro  clavicula_r_z_ele  ...  humerus_l_z_ele  humerus_l_y_ax  elbowangle_l  28  29
 0        6.485206      -4.220661       -1.233433          -15.00546           10.47724  ...         14.79337        46.02733        399.8214   0   0
 1        6.485206      -4.220661       -1.233433          -15.44328           10.46473  ...         14.77317        45.71592        399.3666   0   0
 2        6.485206      -4.220661       -1.233433          -15.42001           10.48047  ...         14.76965        45.32890        399.4807   0   0
 3        6.485206      -4.220661       -1.233433          -15.54270           10.43327  ...         14.86782        45.30117        399.7175   0   0
 4        6.485206      -4.220661       -1.233433          -15.49114           10.93031  ...         15.45898        34.02906        391.7332   0   0
 ```
- 
- 
+
+As being said we have 4 patient groups. Each patient did multiple exercises. The following folder structure is used through the whole project: 
+
+
+
+
 
 - Patients have multiple exercises
 - Patients are stored in a group
