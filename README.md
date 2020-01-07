@@ -2,15 +2,17 @@
 ### Cooperation between LUMC Laboratorium of Kinematics en Neuromechanics (LK&N) and The Hague University of Applied Sciences. 
 
 
-# Table of content  
-
-| # | Chapter | Description |
-| --- | --- | --- |
+| # | Chapter | Paragraph | Description |
+| --- | --- | --- | --- |
 | 1. | [Research](#1-Research) | 
-| 1.1 | [Previous Groups](#11-Previous-groups) | 
-| 1.2 | [Project Management](#12-Project-Management) | 
+| 1.1 | | [Previous Groups](#11-Previous-groups) | 
+| 1.2 | | [Project Management](#12-Project-Management) | 
 | 2. | [Data-set](#2-Data-set) | 
 | 3. | [Visualisation](#3-Visualisation) | 
+| 3.1 | | [Visualising raw data](#31-Visualising-raw-data) |
+| 3.2 | | [Visualising converted data as 2D](#32-Visualising-converted-data-as-2D) |
+| 3.3 | | [t-SNE](#33-t-SNE) |
+| 3.4 | | [Combining raw + converted data](#34-Combining-raw-+-converted-data) | 
 | 4. | [Converting data](#4-Converting-data) | 
 | 5. | [Machine Learning](#5-Machine-Learning) | 
 | 6. | [Coding-Framework](#6-Coding-Framework) | 
@@ -22,7 +24,6 @@
 | 12. | [Failed Attempts](#12-Failed-Attempts) | 
 | 13. | [Feature of the project](#13-Feature-of-the-project) | 
 | 14. | [Git Commits](#14-Git-Commits) | 
-
 
 # 1. Research
 We are doing research for the LUMC in a collaboration with the Laboratory of Kinematics and Neuromechanics (LK&N). The LUMC has requested known patient for muscle torment for a special medical recording to the hospital. The patients are pre-selected by specialized physicians in different levels of torment. Every patient was seated into a special recording room where a physician attached multiple sensors from the Flock of Birds (FOB) recording system on bones of the patient. The patient did multiple types of exercises in most cases multiple times. 
@@ -44,7 +45,7 @@ For our research we had to use SCRUMM. This approach is not commonly used for re
 
 # 2. Data-set
 Physicians requested patients back in 4 groups. 
-Each patient is requested to do multiple exercises: 
+Each patient was requested to do multiple exercises: 
 
 | Short | Description |
 | --- | --- |
@@ -164,7 +165,8 @@ df = df.rename(columns=columns)
 ```
 
 
-## new data-set
+```
+TODO: ## new data-set
 - Matlab
     - raw + calibration
     - extracting to csv 
@@ -172,19 +174,14 @@ df = df.rename(columns=columns)
     - No changes in rotating when a sensor is switched
 - Exercise groups are known
 - Combining exercises based on labels instead of assumptions
-
-## enriching methods
-- Combining exercises per patient
-- Using 5 frames, changing offset
-
-## Cleaning our data-set
-- Filtering / Ordering
-- Combining multiple exercises from one patient
-- 5 rows implementation
-- Splitting test / train (on patient level)
-- Splitting exercises 
+```
 
 # 3. Visualisation
+# 3.1 Visualising raw data
+# 3.2 Visualising converted data as 2D 
+# 3.3 t-SNE
+# 3.4 Combining raw + converted data
+
 - Raw visualistion 2d/3d
 - 2d Visualistion
 - t-SNE
@@ -197,6 +194,18 @@ df = df.rename(columns=columns)
 - More than 5 splits
 - Combining exercises for patients
 - Enriching methods
+
+## enriching methods
+- Combining exercises per patient
+- Using 5 frames, changing offset
+
+## Cleaning our data-set
+- Filtering / Ordering
+- Combining multiple exercises from one patient
+- 5 rows implementation
+- Splitting test / train (on patient level)
+- Splitting exercises 
+
 
 # 5. Machine Learning
 - Logistic Regression
