@@ -60,19 +60,11 @@ This system uses sensors attached to the skin of a patient to record the exact l
 
 _AB1.txt_
 ```
-    2  857.25  -41.08 574.18  
-         0.84   -0.54   0.01  
-         0.54    0.84   0.06  
-        -0.04   -0.04   1.00  
-``` 
-```
-// [sensorid][x, y, z euler angels]
-    2  857.25  -41.08 574.18  
-// [euler rotation matrix]
-         0.84   -0.54   0.01  
-         0.54    0.84   0.06  
-        -0.04   -0.04   1.00  
-``` 
+    2  857.25  -41.08 574.18    // sensorid | x y z
+         0.84   -0.54   0.01    // euler rotation matrix
+         0.54    0.84   0.06    // euler rotation matrix
+        -0.04   -0.04   1.00    // euler rotation matrix
+```  
 
 The LUMC created a script that was able to determent the exact position of a bone based upon the sensor location placed on the skin of a patient. 
 
@@ -82,14 +74,18 @@ The ‘raw data’ contains the position in a 3D space for a single bone. This c
 
 To tackle these issues the LUMC implemented the script to calculate the rotation angle between bones. This would mean movements would be preserved, but the recording environment / bone lengths do not have influence anymore. 
 
-The limbs of a human body are mirrored. So we use the same latin names for each bone and define the side by adding it into the name ```_l_``` or ```_r_```. Each bone is represented by 3 axis to define its rotation in space defined as euler angles. 
+The limbs of a human body are mirrored. So we use the same latin names for each bone and define the side by adding it into the name ```_l_``` or ```_r_```. Each bone is represented by 3 axis to define its rotation in space defined as euler angles. This data is stored as a simple .csv file format. Values are represented as floating point values. 
 
+_bones recored by FoB:_
 - thorax
 - clavicula
 - scapula
 - humerus
 - elbowangle
 
+_thorax is mirrored (data represented a single sensor)_
+
+_example patient exercise format:_
 ```
    thorax_r_x_ext  thorax_r_y_ax  thorax_r_z_lat  clavicula_r_y_pro  clavicula_r_z_ele  ...  humerus_l_z_ele  humerus_l_y_ax  elbowangle_l  28  29
 0        6.485206      -4.220661       -1.233433          -15.00546           10.47724  ...         14.79337        46.02733        399.8214   0   0
@@ -101,17 +97,56 @@ The limbs of a human body are mirrored. So we use the same latin names for each 
 
 As being said we have 4 patient groups. Each patient did multiple exercises. The following folder structure is used through the whole project: 
 
+_Project file tree:_
+```
+.
+├── Category_1
+│   ├── 1
+│   │   ├── AB1.csv
+│   │   ├── AB1.txt
+│   │   ├── AB2.csv
+│   │   ├── AB2.txt
+│   │   ├── AF1.csv
+│   │   ├── AF1.txt
+│   │   ├── AF2.csv
+│   │   ├── AF2.txt
+│   │   └── ...
+│   ├── 2
+│   │   ├── AB1.csv
+│   │   ├── AB1.txt
+│   │   ├── AB2.csv
+│   │   ├── AB2.txt
+│   │   ├── AF1.csv
+│   │   ├── AF1.txt
+│   │   ├── AF2.csv
+│   │   ├── AF2.txt
+│   │   └── ...
+│   └── ...
+├── Category_2
+│   ├── 1
+│   │   ├── AB1.csv
+│   │   ├── AB1.txt
+│   │   └── ...
+│   └── ...
+├── Category_3
+│   ├── 1
+│   │   ├── AB1.csv
+│   │   ├── AB1.txt
+│   │   └── ...
+│   └── ...
+├── Category_4
+│   ├── 1
+│   │   ├── AB1.csv
+│   │   ├── AB1.txt
+│   │   └── ...
+│   └── ...
+```
 
 
 
 
-- Patients have multiple exercises
-- Patients are stored in a group
-- Phasisions took recordings of patients with muscle tearment 
 - Reading the data
-- Not enough data 
-- Mirrored thorax
-
+- Not enough data  
 ## new data-set
 - Matlab
     - raw + calibration
