@@ -76,16 +76,16 @@ To tackle these issues the LUMC implemented the script to calculate the rotation
 
 The limbs of a human body are mirrored. So we use the same latin names for each bone and define the side by adding it into the name ```_l_``` or ```_r_```. Each bone is represented by 3 axis to define its rotation in space defined as euler angles. This data is stored as a simple .csv file format. Values are represented as floating point values. 
 
-_bones recored by FoB:_
+_Thorax is mirrored (data represented a single sensor)._
+_Bones recored by FoB:_
 - thorax
 - clavicula
 - scapula
 - humerus
 - elbowangle
 
-_thorax is mirrored (data represented a single sensor)_
 
-_example patient exercise format:_
+_example patient exercise format (.csv):_
 ```
    thorax_r_x_ext  thorax_r_y_ax  thorax_r_z_lat  clavicula_r_y_pro  clavicula_r_z_ele  ...  humerus_l_z_ele  humerus_l_y_ax  elbowangle_l  28  29
 0        6.485206      -4.220661       -1.233433          -15.00546           10.47724  ...         14.79337        46.02733        399.8214   0   0
@@ -97,7 +97,7 @@ _example patient exercise format:_
 
 As being said we have 4 patient groups. Each patient did multiple exercises. The following folder structure is used through the whole project: 
 
-_Project file tree:_
+_Project file tree, summarized :_
 ```
 .
 ├── Category_1
@@ -142,7 +142,25 @@ _Project file tree:_
 │   └── ...
 ```
 
+Throughout the project reading the dataset very pretty easy. Using pandas we were able to load in the csv with `.read_csv()`. We attached numbers to the columns in order to replace those with the representing bone name.
 
+```python
+import pandas as pd
+columns = {
+        0: "thorax_r_x_ext", 1: "thorax_r_y_ax", 2: "thorax_r_z_lat",
+        3: "clavicula_r_y_pro", 4: "clavicula_r_z_ele", 5: "clavicula_r_x_ax",
+        6: "scapula_r_y_pro", 7: "scapula_r_z_lat", 8: "scapula_r_x_tilt",
+        9: "humerus_r_y_plane", 10: "humerus_r_z_ele", 11: "humerus_r_y_ax",
+        12: "ellebooghoek_r",
+        15: "thorax_l_x_ext", 16: "thorax_l_y_ax", 17: "thorax_l_z_lat",
+        18: "clavicula_l_y_pro", 19: "clavicula_l_z_ele", 20: "clavicula_l_x_ax",
+        21: "scapula_l_y_pro", 22: "scapula_l_z_lat", 23: "scapula_l_x_tilt",
+        24: "humerus_l_y_plane", 25: "humerus_l_z_ele", 26: "humerus_l_y_ax",
+        27: "ellebooghoek_l"
+    }
+df = pd.read_csv(".../Category_1/1/AF1.csv", names=list(range(30))
+df = df.rename(columns=columns)
+```
 
 
 - Reading the data
