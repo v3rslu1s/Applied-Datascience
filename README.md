@@ -45,7 +45,8 @@ For our research we had to use SCRUMM. This approach is not commonly used for re
 # 2. Data-set
 Physicians requested patients back in 4 groups. 
 Each patient is requested to do multiple exercises: 
-| Short | Description
+
+| Short | Description |
 | --- | --- |
 | AB[nr.] | Abduction |
 | AF[nr.] | Anteflexion |
@@ -163,8 +164,6 @@ df = df.rename(columns=columns)
 ```
 
 
-- Reading the data
-- Not enough data  
 ## new data-set
 - Matlab
     - raw + calibration
