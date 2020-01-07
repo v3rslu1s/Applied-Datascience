@@ -74,8 +74,32 @@ _AB1.txt_
         -0.04   -0.04   1.00  
 ``` 
 
+The LUMC created a script that was able to determent the exact position of a bone based upon the sensor location placed on the skin of a patient. 
+
+The ‘raw data’ contains the position in a 3D space for a single bone. This could not be used 1:1 for machine learning. Different examples of why this could be an issue are: 
+- Length of limbs could be read by the machine learning model.
+- No certainty that every recording environment produces the same 3D space.  
+
+To tackle these issues the LUMC implemented the script to calculate the rotation angle between bones. This would mean movements would be preserved, but the recording environment / bone lengths do not have influence anymore. 
+
+The mirrored body is split in to multiple bones, where each bone is represented by 3 axis to define its rotation in space. 
+- thorax
+- clavicula
+- scapula
+- humerus
+- elbow angle
 
 
+```
+   thorax_r_x_ext  thorax_r_y_ax  thorax_r_z_lat  clavicula_r_y_pro  clavicula_r_z_ele  ...  humerus_l_z_ele  humerus_l_y_ax  ellebooghoek_l  28  29
+0        6.485206      -4.220661       -1.233433          -15.00546           10.47724  ...         14.79337        46.02733        399.8214   0   0
+1        6.485206      -4.220661       -1.233433          -15.44328           10.46473  ...         14.77317        45.71592        399.3666   0   0
+2        6.485206      -4.220661       -1.233433          -15.42001           10.48047  ...         14.76965        45.32890        399.4807   0   0
+3        6.485206      -4.220661       -1.233433          -15.54270           10.43327  ...         14.86782        45.30117        399.7175   0   0
+4        6.485206      -4.220661       -1.233433          -15.49114           10.93031  ...         15.45898        34.02906        391.7332   0   0
+```
+ 
+ 
 
 - Patients have multiple exercises
 - Patients are stored in a group
