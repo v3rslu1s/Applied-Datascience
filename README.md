@@ -349,9 +349,26 @@ From each exercise we have picked n frames (smaller than the smallest exercise i
 
 In the case of an exercise with 10 frames, we can pick 5 frames from the exercise: 10 / 5 = 2. We pick the following frames from the exercise: 
 
-||&darr;||&darr;||&darr;||&darr;||&darr;|
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | __2__ | 3 | __4__ | 5 | __6__ | 7 | __8__ | 9 | __10__ |
+|||&darr;||&darr;||&darr;||&darr;||&darr;|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Frame index:| 1 | __2__ | 3 | __4__ | 5 | __6__ | 7 | __8__ | 9 | __10__ |
+
+_Creating the indexes for a exercise._
+```python
+def get_frames(self):
+    frames = []
+    size = self.dataframe_size - 1
+    for index in range(1, config.frames_counts + 1):
+        frames.append(int((size / config.frames_counts) * index))
+    return frames
+```
+
+```python
+# Making a small dataframe of 5 rows by multipling the rows with the columns
+frames = self.get_frames() 
+# filter dataset based on columns and calculated frame indexes 
+self.dataframe = self.dataframe[config.columns].iloc[frames]
+```
 
 Creating a single patient 
 As said above we have 5 exercise types for each patient. We appended these combinations together in order to create a single row in our dataset. 
@@ -378,7 +395,7 @@ The a mount of combinations for a single patient =
 [n AB recordings] · [n AF recordings] · [n EH recordings] · [n EL recordings] · [n RF recordings]
 
 
-In order to implement this we had to reform the data into a dictionary this is sorted by exercise group for every individual patient in the dataset. 
+In order to implement this we had to reform the data into a dictionary which is sorted by exercise group for every individual patient in the dataset. 
 ```python
 {
     "AB": [<list of exercises>],
@@ -388,7 +405,7 @@ In order to implement this we had to reform the data into a dictionary this is s
     "RF": [<list of exercises>]
 }
 ```
-
+_Creating the dictionary_
 ```python
 patient_data = {}
 for name in Exercise.names: # contains list AB, AF, EH, etc..
@@ -408,22 +425,66 @@ return list(itertools.product(patient_data['AF'],
                               patient_data['EH']))
 ```
 
+Looping through all individual patients from each patient group. I append the result from the function above to a list `self.data` and contains the result of `itertools.product()` for each of the patients. 
+
+```python
+import numpy as np 
+# array holding all data
+np_combination_array = np.empty((0, len(self.config.columns) *
+                                    self.config.frames_counts * self.config.exercise_count))
+
+# Looping through all patient combinations
+for exercise_combination in self.data:
+    # Creating an empty array for a single combination 
+    data = np.array([])
+    for exercise in exercise_combination:
+        # Getting 5 frames from exercise
+        exercise_flat = exercise.np_data.reshape(1, len(self.config.columns) * self.config.frames_counts)
+        data = np.append(data, exercise_flat[0])
+
+    np_combination_array = np.vstack([np_combination_array, data])
+
+return np_combination_array
+```
 
 
 # 4.2 Extracting more exercises
 In the case of an exercise with 10 frames, we can pick 5 frames from the exercise: 10 / 2 = 5. We pick the following frames from the exercise: 
 
-|||||&darr;|||||&darr;|
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 2 | 3 | 4 | __5__ | 6 | 7 | 8 | 9 | __10__ |
+||||||&darr;|||||&darr;|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Frame index: | 1 | 2 | 3 | 4 | __5__ | 6 | 7 | 8 | 9 | __10__ |
 
 However this would leave us with unused parts of the exercise. In order to still use all the data for training we created a new method that looks before and after the selected frame (if possible) and extracts these as a new formatted exercise. In the example case its only possible to look before values, this leaves us with two exercise extractions: 
 
-||||&darr;|&darr;||||&darr;|&darr;|
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 2 | 3 | __4__ | _5_ | 6 | 7 | 8 | __9__ | _10_ |
+|||||__&darr;__|&darr;||||__&darr;__|&darr;|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Frame index: | 1 | 2 | 3 | __4__ | _5_ | 6 | 7 | 8 | __9__ | _10_ |
 
 This method would leave us with more data, and we did not use the same data twice. Since the data consists of movements the values almost always fluctuates. 
+
+```python
+def gen_frames(self):
+    # getting the original frames
+    frames = self.get_frames()
+    # creating index sum, example: [-1 0 1] | [-2 -1 0 1 2]
+    new_frame_table = [-int(config.frame_generator_count/2) + var for var in range(config.frame_generator_count)]
+    # Looping through original frame indexes
+    for subframe in frames: 
+        new_frames = []        
+        for frame in new_frame_table:
+            new_frame = subframe + frame 
+            # checking for out of index on dataset
+            if new_frame > len(self) - 1:
+                # subtracting to prevent out of index
+                new_frame = subframe - frame
+            # adding the new index to new_frames
+            new_frames.append(new_frame)  
+        # getting all the indexes from the dataset
+        # appending it to larger array 
+        self.np_frames.append(self.df[config.columns].iloc[new_frames].to_numpy())
+```
+
 
 # 4.3 Occupied euler space
 # 4.4 Images (pictures) from data 
