@@ -14,6 +14,10 @@
 | 3.3 | | [t-SNE](#33-t-SNE) |
 | 3.4 | | [Combining raw + converted data](#34-Combining-raw-+-converted-data) | 
 | 4. | [Converting data](#4-Converting-data) | 
+| 4.1 | | [Combining exercises](#41-Combining-exercises) |
+| 4.2 | | [Extracting more exercises](#42-Extracting-more-exercises) |
+| 4.3 | | [Occupied euler space](#43-Occupied-euler-space) |
+| 4.4 | | [ Images (pictures) from data ](#44-Images-(pictures)-from-data) | 
 | 5. | [Machine Learning](#5-Machine-Learning) | 
 | 6. | [Coding-Framework](#6-Coding-Framework) | 
 | 7. | [Scrum Tasks](#7-Scrum-Tasks) | 
@@ -304,12 +308,80 @@ The small center in the middle is a zoomed out version of the first two images. 
 One of the ideas that was always present is to combine the information from rawdata with the converted data. The converded data was only readable by visualsing the plots. However this was hard for us to understand. With the data from the LUMC we were able to combine these two data-sets in one visualisation. With a group partner i have attempted to read both raw / converted values into a matplotlib visualisation to get the best understanding of the data-set that we have. 
 
 ![combined gif](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/combined_animation.gif)
+
+
 # 4. Converting data
-- Five exercises
-- Time issue
+
+We were required to convert the data we received from the LUMC into a new dataset. From the previous group we knew that we should use logistic regression. This gave us a few problems creating a input dataset. 
+
+- Large variation in amount of recorded exercises (per patient)
+- Large variation in amount of exercise types (per patient)
+- Exercises have different recording length (sample count)
+
+We had to create our own implementation of this data-set in order to get it working with logistic regression. The implementation also had to be reliable, and keep as much original data. 
+
+From this point on we as a project group started to create data-enrichment methods to get the most out of our data set. 
+
+```
+The data set that we received from the LUMC was not large in volume, but large in folders and structure. We also had allot of variation / repetition in the amount of recordings and the type of exercise. The research from the previous group pointed us to using logistic regression. Since our data-set did not have a static length, static amount of exercise recordings, static amount of exercise types for each of the patients we had to create our own interpretation for a logistic regression compatable dataset. 
+
+At the same time did we not want to 
+```
+
+# 4.1 Combining exercises
+
+Patient data is devided in 5 main exercises (table 1). Physician’s recorded one or more exercises each category from a single patient. 
+
+| Exercise type | Recording 1 | Recording 2 |
+| --- | --- | --- |
+| Abductie [AB] | _AB1_ | `AB2` |
+| ... [AF] | _AF1_ | `AF2` |
+| ... [EH] | _EH1_ | `EH2` |
+| ... [EL] | _EL1_ | `EL2` |
+| ... [RF] | _RF1_ | `RF2` |
+
+The goal is to train a logistics regression model with a combination of all exercise types.
+To do this we have to solve a time / exercise length problem. Exercises when executed by patients almost never have the same length. A logistics regression model expects the same amount of inputs for every entry in the dataset. We solved this by creating a combination of exercises with a fixed length. 
+
+Timing issue 
+From each exercise we have picked n frames (smaller than the smallest exercise in the whole dataset). We stepped through the exercise with a step size of exercise-length / n. This simple approach leaves us with a static number of frames for each exercise. 
+
+Creating a single patient 
+As said above we have 5 exercise types for each patient. We appended these combinations together in order to create a single row in our dataset. 
+
+| | | | | |
+| --- | --- | --- | --- | --- |
+| AB1 | AF1	| EH1 | EL1 | RF1 | 
+
+In order to maximize the training dataset, we used a combination of exercise types from a single patient. 
+
+|Combination # | | | | | |
+| --- | --- | --- | --- | --- | --- |
+|1| AB1 | AF1 | EH1 | EL1 | RF1 |
+|2| `AB2` | AF1 | EH1 | EL1 | RF1 |
+|3| AB1 | `AF2` | EH1 | EL1 | RF1 | 
+|4| AB1 | AF1 | `EH2` | EL1 | RF1 |
+|5| AB1 | AF1 | EH1 | `EL2` | RF1 |
+|6| AB1 | AF1 | EH1 | EL1 | `RF2` |
+
+
+In the case of 5 frames per exercise, 5 exercise types per patient, 26 features per exercise = 650 features for a single patient exercise combination. 
+
+The a mount of combinations for a single patient =  
+[n AB recordings] · [n AF recordings] · [n EH recordings] · [n EL recordings] · [n RF recordings]
+
+
+# 4.2 Extracting more exercises
+# 4.3 Occupied euler space
+# 4.4 Images (pictures) from data 
+
+
+- Five exercises 
 - 5 splits of the data
-- More than 5 splits
+    - Combining multiple exercises from one patient
+    - More than 5 splits
 - Combining exercises for patients
+- 360 euler space
 - Creating images from the data 
 
 
@@ -318,9 +390,8 @@ One of the ideas that was always present is to combine the information from rawd
 - Using 5 frames, changing offset
 
 ## Cleaning our data-set
+- Removing idle 
 - Filtering / Ordering
-- Combining multiple exercises from one patient
-- 5 rows implementation
 - Splitting test / train (on patient level)
 - Splitting exercises 
 
