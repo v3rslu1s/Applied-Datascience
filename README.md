@@ -378,6 +378,38 @@ The a mount of combinations for a single patient =
 [n AB recordings] · [n AF recordings] · [n EH recordings] · [n EL recordings] · [n RF recordings]
 
 
+In order to implement this we had to reform the data into a dictionary this is sorted by exercise group for every individual patient in the dataset. 
+```python
+{
+    "AB": [<list of exercises>],
+    "AF": [<list of exercises>],
+    "EH": [<list of exercises>],
+    "EL": [<list of exercises>],
+    "RF": [<list of exercises>]
+}
+```
+
+```python
+patient_data = {}
+for name in Exercise.names: # contains list AB, AF, EH, etc..
+    # creating empty array for each of the exercise keys
+    patient_data[name] = []
+
+# Looping through all exercises of a patient
+for exercise in patient.exercises:
+    # Appending the exercise into the list of key
+    patient_data[exercise.name].append(exercise)
+
+# returning a list of every single combination possible between the exercise types using itertools.product. 
+return list(itertools.product(patient_data['AF'], 
+                              patient_data['EL'], 
+                              patient_data['AB'], 
+                              patient_data['RF'], 
+                              patient_data['EH']))
+```
+
+
+
 # 4.2 Extracting more exercises
 In the case of an exercise with 10 frames, we can pick 5 frames from the exercise: 10 / 2 = 5. We pick the following frames from the exercise: 
 
@@ -391,7 +423,7 @@ However this would leave us with unused parts of the exercise. In order to still
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | 2 | 3 | __4__ | _5_ | 6 | 7 | 8 | __9__ | _10_ |
 
-
+This method would leave us with more data, and we did not use the same data twice. Since the data consists of movements the values almost always fluctuates. 
 
 # 4.3 Occupied euler space
 # 4.4 Images (pictures) from data 
