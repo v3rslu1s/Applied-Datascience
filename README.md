@@ -278,14 +278,25 @@ For this case i created a t-SNE visualisation on our data-set based on a [tutori
 
 [A new branch](https://dev.azure.com/DataScienceMinor/_git/Data%20Science?path=%2F&version=GBt-SNE&_a=contents) was created, where i modified the `patient.py` and `exercise.py` to read a single exercise from a patient. And store this in a single dataframe with all the additional labels / true values. I especially did not choose to load all data in t-SNE so the results would be cleaner and easier to verify. 
 
-Using `sklearn`'s `PCA` module a new representation of the dataset was created. And by adding some configurations the script was able to view the data-set as 2D/3D with or without neighbouring enabled! 
+Using `sklearn`'s `PCA` module a new representation of the dataset was created. And by adding some configurations the script was able to view the data-set as 2D/3D with or without neighbouring enabled!
 
-![t-SNE AB1 Thorax](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/TSNE-Result-AB1-Thorax-l-r.png)
+_t-SNE AB1 Thorax_
+![t-SNE AB1 Thorax](https://raw.githubusercontent.com/v3rslu1s/Applied-Datascience/master/images/TSNE-Result-AB1-Thorax-l-r.png)
 
+_t-SNE AB1 Thorax left-right_
 ![t-SNE AB1 Thorax left-right](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/TSNE-Result-AB1-Thorax.png)
 
-![t-SNE RF1 Thorax](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/TSNE-Result-RF-Thorax.png)
+_t-SNE RF1 Thorax_
+![t-SNE RF1 Thorax](https://raw.githubusercontent.com/v3rslu1s/Applied-Datascience/master/images/TSNE-Result-RF-Thorax.png)
 
+Seen from the images is clear that different groups are present in the data. There are some outliners in a couple catagory's but nothing special. At the moment of creating these images there was not much data-cleaning done (for example removing double exercises and detecting anomolies.)
+
+Also catagory 4 is missing from the dataset in the visualisations. Known was that the recordings from catagory 4 were not converted from raw to euler rotations correctly. This was clearly visible on the following visualisation. 
+
+_t-SNE AB1 catagory 4_
+![t-SNE AB1 catagory 4](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/TSNE-Result-AB1-cat4.jpeg)
+
+The small center in the middle is a zoomed out version of the first two images. We expected the data from catagory 4 to be somewhat comparable to catagory 1-3 but this result shows otherwise. Based upon this visualisation the project group choose to ignore this data until a solution was found. 
  
 # 3.4 Combining raw + converted data
 
@@ -297,7 +308,8 @@ One of the ideas that was always present is to combine the information from rawd
 - 5 splits of the data
 - More than 5 splits
 - Combining exercises for patients
-- Enriching methods
+- Creating images from the data 
+
 
 ## enriching methods
 - Combining exercises per patient
