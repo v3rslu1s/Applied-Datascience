@@ -441,10 +441,8 @@ for exercise_combination in self.data:
         # Getting 5 frames from exercise
         exercise_flat = exercise.np_data.reshape(1, len(self.config.columns) * self.config.frames_counts)
         data = np.append(data, exercise_flat[0])
-
+    # adding the combination to the main data array 
     np_combination_array = np.vstack([np_combination_array, data])
-
-return np_combination_array
 ```
 
 
@@ -469,10 +467,10 @@ def gen_frames(self):
     frames = self.get_frames()
     # creating index sum, example: [-1 0 1] | [-2 -1 0 1 2]
     new_frame_table = [-int(config.frame_generator_count/2) + var for var in range(config.frame_generator_count)]
-    # Looping through original frame indexes
-    for subframe in frames: 
-        new_frames = []        
-        for frame in new_frame_table:
+    for frame in new_frame_table:
+        new_frames = []    
+        # Looping through original frame indexes
+        for subframe in frames: 
             new_frame = subframe + frame 
             # checking for out of index on dataset
             if new_frame > len(self) - 1:
@@ -483,6 +481,50 @@ def gen_frames(self):
         # getting all the indexes from the dataset
         # appending it to larger array 
         self.np_frames.append(self.df[config.columns].iloc[new_frames].to_numpy())
+```
+
+Generating the frames is done on exercise level. Doing this won't affact the relation between the patient group and the patient. This allows us to use the same methology as above. Looping again trough patients to find all combinations between exercises for a single patient. 
+
+```python
+patient_data = {}
+for name in Exercise.names: # contains list AB, AF, EH, etc..
+    # creating empty array for each of the exercise keys
+    patient_data[name] = []
+
+# Looping through all exercises of a patient
+for exercise in patient.exercises:
+    # Appending the exercise into the list of key
+    patient_data[exercise.name].append(exercise)
+
+# returning a list of every single combination possible between the exercise types using itertools.product. 
+return list(itertools.product(patient_data['AF'], 
+                              patient_data['EL'], 
+                              patient_data['AB'], 
+                              patient_data['RF'], 
+                              patient_data['EH']))
+```
+Looping through all individual patients from each patient group. I append the result from the function above to a list `self.data` and contains the result of `itertools.product()` for each of the patients. 
+
+```python
+# creating empty numpy object for an individual patient 
+np_combination_array = np.empty((0, len(self.config.columns) * self.config.frames_counts * 5))
+# looping through all results 
+for exercise_combination in self.data: 
+    # Creating empty array's for all sets in the data
+    data_array = [np.array([]) for _ in range(len(exercise_combination))]
+    # looping through all extending frame groups
+    for exercise_id in range(len(exercise_combination)):
+        # with example indexes [[4, 5, 6] , [9, 10, 11]].
+        # we first add 4, 9, later append 5, 10 to respected list.
+        for exercise_frame in exercise_combination[exercise_id].np_frames:
+            # forming the frames for a single exercise.
+            exercise_flat = exercise_frame.reshape(1, len(self.config.columns) * self.config.frames_counts)
+            # appending to the end of correct row to create array.
+            data_array[exercise_id] = np.append(data_array[exercise_id], exercise_flat[0])
+
+    # appending every exercise combination combined with the extra frame rows to the main data array
+    for data in data_array:
+        np_combination_array = np.vstack([np_combination_array, data])
 ```
 
 
