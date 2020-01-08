@@ -346,16 +346,23 @@ To do this we have to solve a time / exercise length problem. Exercises when exe
 Timing issue 
 From each exercise we have picked n frames (smaller than the smallest exercise in the whole dataset). We stepped through the exercise with a step size of exercise-length / n. This simple approach leaves us with a static number of frames for each exercise. 
 
+
+In the case of an exercise with 10 frames, we can pick 5 frames from the exercise: 10 / 5 = 2. We pick the following frames from the exercise: 
+
+|||||||||||
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | __2__ | 3 | __4__ | 5 | __6__ | 7 | __8__ | 9 | __10__ |
+
 Creating a single patient 
 As said above we have 5 exercise types for each patient. We appended these combinations together in order to create a single row in our dataset. 
 
-| | | | | |
+| [n frames] | [n frames]  | [n frames] | [n frames] | [n frames] |
 | --- | --- | --- | --- | --- |
 | AB1 | AF1	| EH1 | EL1 | RF1 | 
 
 In order to maximize the training dataset, we used a combination of exercise types from a single patient. 
 
-|Combination # | | | | | |
+|Combination # | [n frames] | [n frames]  | [n frames] | [n frames] | [n frames] |
 | --- | --- | --- | --- | --- | --- |
 |1| AB1 | AF1 | EH1 | EL1 | RF1 |
 |2| __AB2__ | AF1 | EH1 | EL1 | RF1 | 
@@ -372,6 +379,20 @@ The a mount of combinations for a single patient =
 
 
 # 4.2 Extracting more exercises
+In the case of an exercise with 10 frames, we can pick 5 frames from the exercise: 10 / 2 = 5. We pick the following frames from the exercise: 
+
+|||||||||||
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 | __5__ | 6 | 7 | 8 | 9 | __10__ |
+
+However this would leave us with unused parts of the exercise. In order to still use all the data for training we created a new method that looks before and after the selected frame (if possible) and extracts these as a new formatted exercise. In the example case its only possible to look before values, this leaves us with two exercise extractions: 
+
+|||||||||||
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 2 | 3 | __4__ | _5_ | 6 | 7 | 8 | __9__ | _10_ |
+
+
+
 # 4.3 Occupied euler space
 # 4.4 Images (pictures) from data 
 
