@@ -358,7 +358,7 @@ In order to maximize the training dataset, we used a combination of exercise typ
 |Combination # | | | | | |
 | --- | --- | --- | --- | --- | --- |
 |1| AB1 | AF1 | EH1 | EL1 | RF1 |
-|2| `AB2` | AF1 | EH1 | EL1 | RF1 |
+|2| __AB2__ | AF1 | EH1 | EL1 | RF1 | 
 |3| AB1 | `AF2` | EH1 | EL1 | RF1 | 
 |4| AB1 | AF1 | `EH2` | EL1 | RF1 |
 |5| AB1 | AF1 | EH1 | `EL2` | RF1 |
