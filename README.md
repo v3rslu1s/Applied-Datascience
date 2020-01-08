@@ -164,7 +164,6 @@ df = pd.read_csv(".../Category_1/1/AF1.csv", names=list(range(30))
 df = df.rename(columns=columns)
 ```
 
-
 ```
 TODO: ## new data-set
 - Matlab
@@ -225,26 +224,24 @@ Each recording has 3 parameters i want to use in the visualisation: `X Y Z`. For
 
 ```Python
 # Updating locations of points and their labels
-        for index, enum in enumerate(zip(self.points, self.texts)):
-            point, text = enum  
-            point.set_data(x[index], y[index])
-            point.set_3d_properties(z[index]) 
-            text._position3d = [x[index] * 1.10, y[index], z[index]]
-            text._text = str(label[index] - 2)
+for index, enum in enumerate(zip(self.points, self.texts)):
+    point, text = enum  
+    point.set_data(x[index], y[index])
+    point.set_3d_properties(z[index]) 
+    text._position3d = [x[index] * 1.10, y[index], z[index]]
+    text._text = str(label[index] - 2)
 
-        # Updating location of lines between points
-        for index, line in enumerate(self.lines):
-            start_index, end_index = VisualiseRaw.stick_bones[index]
-            xdata = [x[start_index], x[end_index]]
-            ydata = [y[start_index], y[end_index]]
-            zdata = [z[start_index], z[end_index]]
-            line.set_data(xdata, ydata)
-            line.set_3d_properties(zdata)
+# Updating location of lines between points
+for index, line in enumerate(self.lines):
+    start_index, end_index = VisualiseRaw.stick_bones[index]
+    xdata = [x[start_index], x[end_index]]
+    ydata = [y[start_index], y[end_index]]
+    zdata = [z[start_index], z[end_index]]
+    line.set_data(xdata, ydata)
+    line.set_3d_properties(zdata)
 ```
 
-7. **Beautifying the animation**: In order to get some more detail from the animation i added trajectory lines to each of the bones. After each frame the trajectory point that is plotted is reduced in size what leads to a nice animation. To get a better understanding about the elbow angle i added this too as value in the visualization. 
-
-![raw gif](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/raw-beautifed-gf.gif)
+7. **Beautifying the animation**: In order to get some more detail from the animation i added trajectory lines to each of the bones. After each frame the trajectory point that is plotted is reduced in size what leads to a nice animation. The last object in the list is redrawn into a new trajectory point to save memory. To get a better understanding about the elbow angle i added this too as value in the visualization and added colors / legend. 
 
 ```python
 # Updating trajectory points
@@ -268,8 +265,28 @@ else:
     self.current_trajectory = self.current_trajectory + 1
 ```
 
+![raw gif](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/raw-beautifed-gf.gif)
+
+[repository for the first part of the code](https://dev.azure.com/DataScienceMinor/_git/Data%20Science?path=%2F&version=GBRaw-visualisation&_a=contents)
+
+
 # 3.2 Visualising converted data as 2D 
 # 3.3 t-SNE
+
+Our data-set is so large, and has so many features that it was not possible to visualise the different catagory's in one visualisation that is still readable.
+For this case i created a t-SNE visualisation on our data-set based on a [tutorial](https://towardsdatascience.com/visualising-high-dimensional-datasets-using-pca-and-t-sne-in-python-8ef87e7915b?gi=4059c9d035b8). The tutorial defines a large dataframe where two new columns were added `'y'` and `'label'`. At that moment all the code that was written was mostly object oriented, and focused upon improving memory usage and one time reading of the data. Because of this I had to rewrite a large part of the importing of the full file structure especially for t-SNE. 
+
+[A new branch](https://dev.azure.com/DataScienceMinor/_git/Data%20Science?path=%2F&version=GBt-SNE&_a=contents) was created, where i modified the `patient.py` and `exercise.py` to read a single exercise from a patient. And store this in a single dataframe with all the additional labels / true values. I especially did not choose to load all data in t-SNE so the results would be cleaner and easier to verify. 
+
+Using `sklearn`'s `PCA` module a new representation of the dataset was created. And by adding some configurations the script was able to view the data-set as 2D/3D with or without neighbouring enabled! 
+
+![t-SNE AB1 Thorax](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/TSNE-Result-AB1-Thorax-l-r.png)
+
+![t-SNE AB1 Thorax left-right](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/TSNE-Result-AB1-Thorax.png)
+
+![t-SNE RF1 Thorax](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/TSNE-Result-RF-Thorax.png)
+
+ 
 # 3.4 Combining raw + converted data
 
 One of the ideas that was always present is to combine the information from rawdata with the converted data. The converded data was only readable by visualsing the plots. However this was hard for us to understand. With the data from the LUMC we were able to combine these two data-sets in one visualisation. With a group partner i have attempted to read both raw / converted values into a matplotlib visualisation to get the best understanding of the data-set that we have. 
