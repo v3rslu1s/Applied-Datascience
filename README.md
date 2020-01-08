@@ -242,6 +242,32 @@ Each recording has 3 parameters i want to use in the visualisation: `X Y Z`. For
             line.set_3d_properties(zdata)
 ```
 
+7. **Beautifying the animation**: In order to get some more detail from the animation i added trajectory lines to each of the bones. After each frame the trajectory point that is plotted is reduced in size what leads to a nice animation. To get a better understanding about the elbow angle i added this too as value in the visualization. 
+
+![raw gif](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/raw-beautifed-gf.gif)
+
+```python
+# Updating trajectory points
+# Last used point is updated with lastest coordinates 
+for index, trajectory_list in enumerate(self.trajectory_points): 
+    trajectory_list[self.current_trajectory].set_data(x[index], y[index])
+    trajectory_list[self.current_trajectory].set_3d_properties(z[index])
+    trajectory_list[self.current_trajectory]._color = self.colors[index]
+    trajectory_list[self.current_trajectory]._markersize = 6
+
+    # Upon each new frame, decreasing size / color of each trajectory point
+    for index, trajectory in enumerate(trajectory_list):
+        if index != self.current_trajectory:
+            trajectory._color = trajectory._color * 0.85
+            trajectory._markersize = trajectory._markersize * 0.9
+
+# Update current_trajectory to last used trajectory point for next frame
+if self.current_trajectory == len(self.colors) - 1:
+    self.current_trajectory = 0 
+else: 
+    self.current_trajectory = self.current_trajectory + 1
+```
+
 # 3.2 Visualising converted data as 2D 
 # 3.3 t-SNE
 # 3.4 Combining raw + converted data
