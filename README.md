@@ -177,7 +177,74 @@ TODO: ## new data-set
 ```
 
 # 3. Visualisation
+For the project group it was the first few weeks hard to understand what data we could work with. In order to get insights into the data for our own understanding, as for the verification / data cleaning I created multiple scripts that were able to read the data an visualize it in different ways. 
+
+
 # 3.1 Visualising raw data
+
+The FoB system has multiple receivers who on their own time write the position of a sensor to a text file. In order to visualize this data i first had to split each sensor recording, and read its ID (first value). For all sensors i created a large dictionary with keys for each sensor, and storing all recordings of the sensor in a large list. -> `unpack_values()`
+
+```
+9  1267.57  -278.16  471.93  
+      0.37     0.92    0.14  
+      0.12    -0.19    0.97  
+      0.92    -0.35   -0.18  
+
+2  857.25  -41.08  574.18  
+     0.84   -0.54    0.01  
+     0.54    0.84    0.06  
+    -0.04   -0.04    1.00  
+
+3  1259.53  -17.86  35.27  
+     -0.58    0.19  -0.80  
+     -0.16   -0.98  -0.11  
+     -0.80    0.06   0.59  
+```
+
+Each recording has 3 parameters i want to use in the visualisation: `X Y Z`. For each FoB recording the sensors were not outputted in a static order. Because of this i recreated the timeline `generate_timeline()`. 
+1. **Extracting the sensor data**: From each sensor recording i retreived the first row. Splitted this into 4 chunks, and stored the values as a `NumPy` array with type `Float64`. 
+2. **Looping through all sensor recordings**: and storing the float values in a dictionary with the key based on the sensor id. This groups all recordings of each sensor in a list ordered on moment of recording. 
+3. **Generating timeline**: The animation function requires to draw single frames. Because of this i choose to generate a timeline from the data in a different format. The `generate_timeline()` creates a list of dictionary's in order of time. Every dictionary contains the `X Y Z` for each of the sensors. 
+4. **Working with matplotlib animations**: The matplotlib `FuncAnimation()` requires a list of things to work: 
+    - Figure to draw the animation
+    - Function that updates the frame
+    - Init function   
+    - Total count of frames
+    - Interval
+
+    The init function initalises the variables used for the animation. 
+    The function that updates the frames receives a frame index from the `FuncAnimation()` witch i used to get the correct sensor recordings from the timeline generated before. 
+
+5. **Creating a skeleton**: While attempting to draw a single frame i could add some plots with the sensor index, with this information i was able to create a skeleton (lines between the bones) to form a body shape. 
+
+![skeleton from raw data](https://i.snipboard.io/GHBKQ5.jpg "Skeleton from raw data")
+
+6. **Animating**: My first attempt was to recreate each point in the dataset for every frame drawn in the animation. This resulted to be very slow. This is why i updated the values for each plot/line with the matplotlib `set_data()` and `set_3d_properties()` functions. 
+
+```Python
+# Updating locations of points and their labels
+        for index, enum in enumerate(zip(self.points, self.texts)):
+            point, text = enum  
+            point.set_data(x[index], y[index])
+            point.set_3d_properties(z[index]) 
+            text._position3d = [x[index] * 1.10, y[index], z[index]]
+            text._text = str(label[index] - 2)
+
+        # Updating location of lines between points
+        for index, line in enumerate(self.lines):
+            start_index, end_index = VisualiseRaw.stick_bones[index]
+            xdata = [x[start_index], x[end_index]]
+            ydata = [y[start_index], y[end_index]]
+            zdata = [z[start_index], z[end_index]]
+            line.set_data(xdata, ydata)
+            line.set_3d_properties(zdata)
+```
+
+By extracting all sensors in timly order in a new list. Each entry in the lists consisted out of a dictonary with each sensor id as key, and x y z coordinates as values. 
+
+Visualizing 
+
+
 # 3.2 Visualising converted data as 2D 
 # 3.3 t-SNE
 # 3.4 Combining raw + converted data
