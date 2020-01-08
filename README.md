@@ -334,11 +334,11 @@ Patient data is devided in 5 main exercises (table 1). Physician’s recorded on
 
 | Exercise type | Recording 1 | Recording 2 |
 | --- | --- | --- |
-| Abductie [AB] | _AB1_ | `AB2` |
-| ... [AF] | _AF1_ | `AF2` |
-| ... [EH] | _EH1_ | `EH2` |
-| ... [EL] | _EL1_ | `EL2` |
-| ... [RF] | _RF1_ | `RF2` |
+| Abductie [AB] | _AB1_ | __AB2__ |
+| ... [AF] | _AF1_ | __AF2__ |
+| ... [EH] | _EH1_ | __EH2__ |
+| ... [EL] | _EL1_ | __EL2__ |
+| ... [RF] | _RF1_ | __RF2__ |
 
 The goal is to train a logistics regression model with a combination of all exercise types.
 To do this we have to solve a time / exercise length problem. Exercises when executed by patients almost never have the same length. A logistics regression model expects the same amount of inputs for every entry in the dataset. We solved this by creating a combination of exercises with a fixed length. 
@@ -359,10 +359,10 @@ In order to maximize the training dataset, we used a combination of exercise typ
 | --- | --- | --- | --- | --- | --- |
 |1| AB1 | AF1 | EH1 | EL1 | RF1 |
 |2| __AB2__ | AF1 | EH1 | EL1 | RF1 | 
-|3| AB1 | `AF2` | EH1 | EL1 | RF1 | 
-|4| AB1 | AF1 | `EH2` | EL1 | RF1 |
-|5| AB1 | AF1 | EH1 | `EL2` | RF1 |
-|6| AB1 | AF1 | EH1 | EL1 | `RF2` |
+|3| AB1 | __AF2__ | EH1 | EL1 | RF1 | 
+|4| AB1 | AF1 | __EH2__ | EL1 | RF1 |
+|5| AB1 | AF1 | EH1 | __EL2__ | RF1 |
+|6| AB1 | AF1 | EH1 | EL1 | __RF2__ |
 
 
 In the case of 5 frames per exercise, 5 exercise types per patient, 26 features per exercise = 650 features for a single patient exercise combination. 
