@@ -182,6 +182,8 @@ For the project group it was the first few weeks hard to understand what data we
 
 # 3.1 Visualising raw data
 
+![raw gif](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/raw_visualisation.gif)
+
 The FoB system has multiple receivers who on their own time write the position of a sensor to a text file. In order to visualize this data i first had to split each sensor recording, and read its ID (first value). For all sensors i created a large dictionary with keys for each sensor, and storing all recordings of the sensor in a large list. -> `unpack_values()`
 
 ```
@@ -240,19 +242,11 @@ Each recording has 3 parameters i want to use in the visualisation: `X Y Z`. For
             line.set_3d_properties(zdata)
 ```
 
-By extracting all sensors in timly order in a new list. Each entry in the lists consisted out of a dictonary with each sensor id as key, and x y z coordinates as values. 
-
-Visualizing 
-
-
 # 3.2 Visualising converted data as 2D 
 # 3.3 t-SNE
 # 3.4 Combining raw + converted data
 
-- Raw visualistion 2d/3d
-- 2d Visualistion
-- t-SNE
-- Combining raw + converted
+One of the ideas that was always present is to combine the information from rawdata with the converted data. The converded data was only readable by visualsing the plots. However this was hard for us to understand. With the data from the LUMC we were able to combine these two data-sets in one visualisation. With a group partner i have attempted to read both raw / converted values into a matplotlib visualisation to get the best understanding of the data-set that we have. 
 
 # 4. Converting data
 - Five exercises
