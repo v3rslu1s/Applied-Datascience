@@ -296,12 +296,14 @@ Also catagory 4 is missing from the dataset in the visualisations. Known was tha
 _t-SNE AB1 catagory 4_
 ![t-SNE AB1 catagory 4](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/TSNE-Result-AB1-cat4.jpeg)
 
-The small center in the middle is a zoomed out version of the first two images. We expected the data from catagory 4 to be somewhat comparable to catagory 1-3 but this result shows otherwise. Based upon this visualisation the project group choose to ignore this data until a solution was found. 
+The small center in the middle is a zoomed out version of the first two images. We expected the data from catagory 4 to be somewhat comparable to catagory 1-3 but this result shows otherwise. Based upon this visualisation the project group choose to ignore this data until verification that the data is correct.
+
  
 # 3.4 Combining raw + converted data
 
 One of the ideas that was always present is to combine the information from rawdata with the converted data. The converded data was only readable by visualsing the plots. However this was hard for us to understand. With the data from the LUMC we were able to combine these two data-sets in one visualisation. With a group partner i have attempted to read both raw / converted values into a matplotlib visualisation to get the best understanding of the data-set that we have. 
 
+![combined gif](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/combined_animation.gif)
 # 4. Converting data
 - Five exercises
 - Time issue
