@@ -29,6 +29,8 @@ more text with two line breaks between.
     
 [this is the description](http://www.github.com)
 
+![patientimage2large](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage2large.png)
+
 This paragraph has some `variable` inline code.
 
 ```html

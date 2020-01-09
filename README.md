@@ -39,6 +39,20 @@ Our research is about using machine learning techniques to classify feature pati
 Research question: 
 > **To what extend and in what way, can different (unsupervised) data science techniques be used on kinematic recordings to contribute to a more valid and more reliable diagnosis, made by a doctor, on shoulder disability.**
 
+```
+Result from last year, based on allot of assumptions
+We tried to encrease teh quality of the data
+The result of the logistics regression did get better or worse 
+
+Conclusion about of facts, not assumptions (dataset)
+
+**result** model is worse because of:
+- not enough data
+- previous group had to many assumptions 
+
+- Verify results by creating a visualistion of the model learning process. 
+```
+
 # 1.1 Previous groups 
 The previous research group that took an interest in this subject has done allot of work to get us started quickly. [https://github.com/Lukelumia/Applied-Data-Science]. They mainly did research to determent what type of machine learning model would fit the dataset produced by the LUMC the best. They created a way to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the dataset. 
 
@@ -532,16 +546,38 @@ for exercise_combination in self.data:
 
 # 4.4 Images (pictures) from exercises 
 
-_Patient converted into image_
+Images are a great way of formatting data. A single pixel could consist out of 3 channels (colors: red, green, blue) with defined values (0 -> 255). Or data-set consists out of sensors placed on a patient. These sensors record in 3 dimentions (x, y, z). A good fit for the 3 channels in an image. 
 
-![patientimage1large](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage2large.png)
-[original 1](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage1.png)
+![pixels-xyz](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/pixels-xyz.png)
 
-![patientimage2large](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage2large.png)
-[original 2](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage2.png)
+There are pretrained neural networks based upon recignising patterns in images. Fitting our data into could introduce these pretrained networks for our model. 
+
+To start with I have made a list of bones i want to attach to each row of pixels. For each moment in time a pixel is created with 3 channels. Stacking the pixels next to each other to create a single row. 
+
+| row index | channel 1 | channel 2 | channel 3 |
+| --- | --- | --- | --- |
+|1| thorax_r_x_ext | thorax_r_y_ax | thorax_r_z_lat | 
+|2| clavicula_r_y_pro | clavicula_r_z_ele | clavicula_r_x_ax |
+|3| scapula_r_y_pro | scapula_r_z_lat | scapula_r_x_tilt |
+|4| humerus_r_y_plane | humerus_r_z_ele | humerus_r_y_ax |
+|5| thorax_l_x_ext | thorax_l_y_ax | thorax_l_z_lat |
+|6| clavicula_l_y_pro | clavicula_l_z_ele | clavicula_l_x_ax |
+|7| scapula_l_y_pro | scapula_l_z_lat | scapula_l_x_tilt |
+|8| humerus_l_y_plane | humerus_l_z_ele | humerus_l_y_ax| )
+
+This process results in a bar of 8 pixels. A patient has done 5 exercises, stacking these exercises in a zeroed out array creates the following image
+
+_Patient converted into image, enlarged_ -> [original](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage1.png)
+
+![patientimage1large](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage1large.png)
+
+_Patient converted into image, enlarged_ -> [original](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage2.png)
+![patientimage2large](images/patientimage2large.png)
+
+For the first image its clear that the last exercise added (lowest bar with color green present) has a much longer lenght than the other exercises. The colors do seem to change much over time. 
+
 
 ```python
-
 def image_for_patient(patient):
     max_lenght = 0
     for exercise in patient.exercises:
@@ -568,6 +604,50 @@ def image_for_patient(patient):
     im.save('{filename}.png'.format(filename=str(patient)))
 ```
 
+## adding additional layers to the image 
+- differentiation 
+
+```python
+self.filtered_signal = self.lowpassfilter(1/6, 1 / (2 * math.pi * 0.5)) 
+
+def differentiation(self, y,  h=1):
+    '''Compute the difference formula for f'(a) with step size h.
+        Parameters
+        ----------
+        f : function
+            Vectorized function of one variable
+        a : number
+            Compute derivative at x = a
+        method : string
+            Difference formula: 'forward', 'backward' or 'central'
+        h : number
+            Step size in difference formula
+        '''
+    differentiation = np.zeros((y.shape))
+    for i, value in enumerate(range(y.shape[0] - 1), 1):
+        differentiation[i] = (y[i] - y[i-1]) / (1/6)
+
+    return differentiation 
+
+# TODO: Implement function on all bones!! 
+def lowpassfilter(self, dt, RC):
+    # RC: time constant - related to cut off freq
+    # dt: time interval 
+    _np_array = np.empty(self.df.shape)
+
+    for i in range(self.df.shape[1]):
+        x = self.df.to_numpy()[:,i]  
+        y = np.zeros((self.df.shape[0], 1))
+        a = dt / (RC + dt)  
+        y[0] = x[0] 
+        
+        for i, value in enumerate(range(x.shape[0] - 1), start=1):    
+            y[i] = a * x[i] + (1-a) * y[i-1]
+
+        _np_array = np.hstack((_np_array, y))
+
+    return _np_array
+```
 
 - Five exercises 
 - 5 splits of the data
@@ -638,6 +718,7 @@ def image_for_patient(patient):
 
 # 14. Git Commits 
 
+# 15. Reflection 
 
 # LINKS TO PROVE : 
 - Github commits 
