@@ -530,10 +530,12 @@ for exercise_combination in self.data:
 # 4.3 Occupied euler space
 
 
-# 4.4 Images (pictures) from data 
+# 4.4 Images (pictures) from exercises 
 
-_t-SNE AB1 catagory 4_
-![t-SNE AB1 catagory 4](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage.png)
+_Patient converted into image_
+
+![t-SNE AB1 catagory 4](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage1.png)
+![t-SNE AB1 catagory 4](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage2.png)
 
 ```python
 
