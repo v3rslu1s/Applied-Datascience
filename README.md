@@ -534,8 +534,11 @@ for exercise_combination in self.data:
 
 _Patient converted into image_
 
-![t-SNE AB1 catagory 4](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage1.png)
-![t-SNE AB1 catagory 4](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage2.png)
+![patientimage1large](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage2large.png)
+[original 1](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage1.png)
+
+![patientimage2large](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage2large.png)
+[original 2](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage2.png)
 
 ```python
 
