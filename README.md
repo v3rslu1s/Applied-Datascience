@@ -36,16 +36,16 @@ This leaves us with a data-set of labeled patient recordings. The labels are cre
 
 Our research is about using machine learning techniques to classify feature patients based on the previous classification of the LUMC physicians. 
 
+Research question: 
+> **To what extend and in what way, can different (unsupervised) data science techniques be used on kinematic recordings to contribute to a more valid and more reliable diagnosis, made by a doctor, on shoulder disability.**
 
 # 1.1 Previous groups 
 The previous research group that took an interest in this subject has done allot of work to get us started quickly. [https://github.com/Lukelumia/Applied-Data-Science]. They mainly did research to determent what type of machine learning model would fit the dataset produced by the LUMC the best. They created a way to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the dataset. 
 
 After reading their full reports the 19/20 project group had some doubts about certain assumptions the group made. Based on this information we contacted the LUMC for clarification. This led to the LUMC sharing more labels on our dataset in order to take the doubts / possible assumptions from the previous group away. 
 
-
 # 1.2 Project Management
 For our research we had to use SCRUMM. This approach is not commonly used for research projects. However in our project group it worked good. After a few weeks reading / understanding the work of the previous group we were able sub questions (issues) building up to a main question. Each issue was built upon multiple tasks that were shared over the project group. All of this was implemented in Azure Dev Ops.  
-
 
 # 2. Data-set
 Physicians requested patients back in 4 groups. 
@@ -332,13 +332,13 @@ At the same time did we not want to
 
 Patient data is devided in 5 main exercises (table 1). Physician’s recorded one or more exercises each category from a single patient. 
 
-| Exercise type | Recording 1 | Recording 2 |
-| --- | --- | --- |
-| Abductie [AB] | _AB1_ | __AB2__ |
-| ... [AF] | _AF1_ | __AF2__ |
-| ... [EH] | _EH1_ | __EH2__ |
-| ... [EL] | _EL1_ | __EL2__ |
-| ... [RF] | _RF1_ | __RF2__ |
+| Short | Description | Recording 1 | Recording 2 |
+| --- | --- | --- | --- |
+| AB[nr.] | Abduction | _AB1_ | __AB2__ |
+| AF[nr.] | Anteflexion | _AF1_ | __AF2__ |
+| RF[nr.] | Retroflexion |  _EH1_ | __EH2__ |
+| EH[nr.] | Endo/Exorotation coronal | _EL1_ | __EL2__ |
+| EL[nr.] | Endo/Exorotation humerus | _RF1_ | __RF2__ |
 
 The goal is to train a logistics regression model with a combination of all exercise types.
 To do this we have to solve a time / exercise length problem. Exercises when executed by patients almost never have the same length. A logistics regression model expects the same amount of inputs for every entry in the dataset. We solved this by creating a combination of exercises with a fixed length. 
@@ -527,9 +527,41 @@ for exercise_combination in self.data:
         np_combination_array = np.vstack([np_combination_array, data])
 ```
 
-
 # 4.3 Occupied euler space
+
+
 # 4.4 Images (pictures) from data 
+
+_t-SNE AB1 catagory 4_
+![t-SNE AB1 catagory 4](https://github.com/v3rslu1s/Applied-Datascience/raw/master/images/patientimage.png)
+
+```python
+
+def image_for_patient(patient):
+    max_lenght = 0
+    for exercise in patient.exercises:
+        if exercise.dataframe_size() > max_lenght:
+            max_lenght = exercise.dataframe_size() 
+
+    imarray = np.zeros((len(patient.exercises) * 8, max_lenght, 3))
+    print('created an empty image with the shape:', imarray.shape)
+    exercise_index = 0 
+    for exercise in patient.exercises: 
+        dataframe = exercise.dataframe.mod(360).divide(360).multiply(255)
+        print('adding dataframe to image with shape:', dataframe.shape)
+        for column_index, column in enumerate(columns, exercise_index):
+            for row_index in range(exercise.dataframe_size()): 
+                x, y, z = column 
+                imarray[column_index, row_index, 0] = dataframe[[z]].iloc[row_index]
+                imarray[column_index, row_index, 1] = dataframe[[x]].iloc[row_index]
+                imarray[column_index, row_index, 2] = dataframe[[y]].iloc[row_index]
+        exercise_index = exercise_index + len(columns) 
+
+    imarray = imarray.astype(np.uint8) 
+    
+    im = Image.fromarray(imarray, mode='RGB')
+    im.save('{filename}.png'.format(filename=str(patient)))
+```
 
 
 - Five exercises 
