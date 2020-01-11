@@ -325,7 +325,7 @@ The small center in the middle is a zoomed out version of the first two images. 
 
 One of the ideas that was always present is to combine the information from rawdata with the converted data. The converded data was only readable by visualsing the plots. However this was hard for us to understand. With the data from the LUMC we were able to combine these two data-sets in one visualisation. With a group partner i have attempted to read both raw / converted values into a matplotlib visualisation to get the best understanding of the data-set that we have. 
 
-![combined gif](images/combined_animation.gif)
+![combined gif](images/animationV1.gif)
 
 
 # 4. Converting data
