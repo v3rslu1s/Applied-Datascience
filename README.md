@@ -17,7 +17,7 @@
 | 4.1 | | [Combining exercises](#41-Combining-exercises) |
 | 4.2 | | [Extracting more exercises](#42-Extracting-more-exercises) |
 | 4.3 | | [Occupied euler space](#43-Occupied-euler-space) |
-| 4.4 | | [ Images (pictures) from data ](#44-Images-(pictures)-from-data) | 
+| 4.4 | | [ Images (pictures) from data ](#44-Images-(pictures)-from-data) |
 | 5. | [Machine Learning](#5-Machine-Learning) | 
 | 6. | [Coding-Framework](#6-Coding-Framework) | 
 | 7. | [Scrum Tasks](#7-Scrum-Tasks) | 
@@ -27,8 +27,9 @@
 | 11. | [Wordlist](#11-Wordlist) | 
 | 12. | [Failed Attempts](#12-Failed-Attempts) | 
 | 13. | [Feature of the project](#13-Feature-of-the-project) | 
-| 14. | [Git Commits](#14-Git-Commits) | 
-
+| 14. | [Git Commits](#14-Git-Commits) | | A list of all git commits created by me (including url's)
+| 14. | [Reflection](#15-Reflection) | 
+ 
 # 1. Research
 We are doing research for the LUMC in a collaboration with the Laboratory of Kinematics and Neuromechanics (LK&N). The LUMC has requested known patient for muscle torment for a special medical recording to the hospital. The patients are pre-selected by specialized physicians in different levels of torment. Every patient was seated into a special recording room where a physician attached multiple sensors from the Flock of Birds (FOB) recording system on bones of the patient. The patient did multiple types of exercises in most cases multiple times. 
 
@@ -697,6 +698,49 @@ def lowpassfilter(self, dt, RC):
 - Implementing in framework
 
 # 6. Coding Framework
+
+From early in the project I have started working on a Framework for the available dataset. There were many implementations possible for our data-set. In order to create a structure that would be reusable over different iterations I choose for a object orientated model. This would lead to better memory management, and faster implementing new features. 
+
+![patient diagram uml](/images/patientuml1.png)
+
+Because of this structure it was very easy to read all of the information from files into memory. Where is object has its own place in memory. If patients need to be rotated or searched through python would only need the pointer to this place in memory instead of reading the full csv again, or moving around large arrays in memory. 
+
+## Configurations
+
+As explained above there are multiple ways of transforming the data into a shape that is fit for machine learning. To apply these configurations with an efficient method we created a toolbox and a config class.
+
+A config class contains switches for all implementations we have build as a group. There is one general config class for the whole project. However the config could be modified during the lifetime of the program. 
+
+```python
+class config(baseconfig):
+    remove_idle = False
+    resample_exercise = False 
+    frame_generator = False 
+    occupied_space = False 
+    default = True 
+
+    normalise = True
+
+    remove_idle_split_count = 3
+    frames_counts = 5
+    binsize = 10
+    frame_generator_count = 5
+
+    exercisegroups = ['AF', 'EL', 'AB', 'RF', 'EH']
+    exercise_count = len(exercisegroups)
+```
+
+At the launch of the program, for each patient in every patiengroup the original exercise data is loaded into `Exercise.df`. This dataframe should never been touched and be concidered to be read-only. `Excercise.py` contains a function `update_config()`. This function looks at the current state of the config class and apply's all enabled methods to a new variable `dataframe`. By default this function is called after loading the df variable. 
+
+![system flowchart](/images/patientuml2.png)
+
+
+
+Where each of the groups could be group together with a reference and not by copying the full data-set in memory. 
+
+
+
+
 - Reading the data-set
 - UML 
 - Benefits 
@@ -739,23 +783,6 @@ def lowpassfilter(self, dt, RC):
 - AR 
 
 # 14. Git Commits 
-
-# 15. Reflection 
-
-# LINKS TO PROVE : 
-- Github commits 
-- Github files 
-
-## domain knowlegde
-- Used Language
-
-- Questions LUMC 
-    - What bodypart is the most important
-    - Understanding the axis
-    - What information can a physician get from the arm's extention
-    - What information can a physician get from the smoothness of movement 
-    - Left right
-    - Man vrouw
 
 | Commit Hash (clickable) | Date | Branch | Details |
 | --- | --- | --- | --- |
@@ -888,3 +915,21 @@ def lowpassfilter(self, dt, RC):
 [d5baac2](https://dev.azure.com/DataScienceMinor/Data%20Science/_git/Data%20Science/commit/e195b5d6191e424bca28a66ee8a4d1e77d5baac2)|2019-09-09T10:24:15+02:00||.gitignore for python
 [bbc8e8a](https://dev.azure.com/DataScienceMinor/Data%20Science/_git/Data%20Science/commit/ccbb2c21b7f7d16cfc182021b7fd2d071bbc8e8a)|2019-09-09T10:22:13+02:00||Minor changes
 [85bdf0a](https://dev.azure.com/DataScienceMinor/Data%20Science/_git/Data%20Science/commit/1f4492c190cb34357565e8add76a0513585bdf0a)|2019-09-09T10:19:56+02:00||Test data
+
+
+# 15. Reflection 
+
+# LINKS TO PROVE : 
+- Github commits 
+- Github files 
+
+## domain knowlegde
+- Used Language
+
+- Questions LUMC 
+    - What bodypart is the most important
+    - Understanding the axis
+    - What information can a physician get from the arm's extention
+    - What information can a physician get from the smoothness of movement 
+    - Left right
+    - Man vrouw
