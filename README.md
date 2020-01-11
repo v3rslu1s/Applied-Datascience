@@ -18,17 +18,18 @@
 | 4.2 | | [Extracting more exercises](#42-Extracting-more-exercises) |
 | 4.3 | | [Occupied euler space](#43-Occupied-euler-space) |
 | 4.4 | | [ Images (pictures) from data ](#44-Images-(pictures)-from-data) |
-| 5. | [Machine Learning](#5-Machine-Learning) | 
-| 6. | [Coding-Framework](#6-Coding-Framework) | 
+| 5. | [Coding-Framework](#5-Coding-Framework) | 
+| 6. | [Machine Learning](#6-Machine-Learning) | 
 | 7. | [Scrum Tasks](#7-Scrum-Tasks) | 
 | 8. | [Neural Networks](#8-Neural-Networks) | 
-| 9. | [Personal Development](#9-Personal-Development) | 
-| 10. | [Presentations](#10-Presentations) | 
-| 11. | [Wordlist](#11-Wordlist) | 
-| 12. | [Failed Attempts](#12-Failed-Attempts) | 
-| 13. | [Feature of the project](#13-Feature-of-the-project) | 
-| 14. | [Git Commits](#14-Git-Commits) | | A list of all git commits created by me (including url's)
-| 14. | [Reflection](#15-Reflection) | 
+| 9. | [Conclusion](#9-Conclusion) | 
+| 10. | [Personal Development](#10-Personal-Development) | 
+| 11. | [Presentations](#11-Presentations) | 
+| 12. | [Wordlist](#12-Wordlist) | 
+| 13. | [Failed Attempts](#13-Failed-Attempts) | 
+| 14. | [Feature of the project](#14-Feature-of-the-project) | 
+| 15. | [Git Commits](#15-Git-Commits) | | A list of all git commits created by me (including url's)
+| 16. | [Reflection](#16-Reflection) | 
  
 # 1. Research
 We are doing research for the LUMC in a collaboration with the Laboratory of Kinematics and Neuromechanics (LK&N). The LUMC has requested known patient for muscle torment for a special medical recording to the hospital. The patients are pre-selected by specialized physicians in different levels of torment. Every patient was seated into a special recording room where a physician attached multiple sensors from the Flock of Birds (FOB) recording system on bones of the patient. The patient did multiple types of exercises in most cases multiple times. 
@@ -41,6 +42,7 @@ Research question:
 > **To what extend and in what way, can different (unsupervised) data science techniques be used on kinematic recordings to contribute to a more valid and more reliable diagnosis, made by a doctor, on shoulder disability.**
 
 ```
+The projectgroup of 19/20 is not the first group who contributes to this research. Two 
 Result from last year, based on allot of assumptions
 We tried to encrease teh quality of the data
 The result of the logistics regression did get better or worse 
@@ -55,9 +57,9 @@ Conclusion about of facts, not assumptions (dataset)
 ```
 
 # 1.1 Previous groups 
-The previous research group that took an interest in this subject has done allot of work to get us started quickly. [https://github.com/Lukelumia/Applied-Data-Science]. They mainly did research to determent what type of machine learning model would fit the dataset produced by the LUMC the best. They created a way to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the dataset. 
+The projectgroup of 19/20 is not the first group who contributed to this research. The previous research group that took an interest in this subject has done allot of work to get us started quickly. [https://github.com/Lukelumia/Applied-Data-Science]. They mainly did research to determent what type of machine learning model would fit the data-set produced by the LUMC the best. They created a way to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the data-set. 
 
-After reading their full reports the 19/20 project group had some doubts about certain assumptions the group made. Based on this information we contacted the LUMC for clarification. This led to the LUMC sharing more labels on our dataset in order to take the doubts / possible assumptions from the previous group away. 
+After reading their full reports the 19/20 project group had some doubts about certain assumptions the group made. Based on this information we contacted the LUMC for clarification. This led to the LUMC sharing more labels on our data-set in order to take some doubts / possible assumptions about the labels of the data-set from the previous group away. This still leaves allot of information to processes, and domain knowledge to gain. The verification of their process took almost the full time of the minor. 
 
 # 1.2 Project Management
 For our research we had to use SCRUMM. This approach is not commonly used for research projects. However in our project group it worked good. After a few weeks reading / understanding the work of the previous group we were able sub questions (issues) building up to a main question. Each issue was built upon multiple tasks that were shared over the project group. All of this was implemented in Azure Dev Ops.  
@@ -691,13 +693,7 @@ def lowpassfilter(self, dt, RC):
 - Splitting test / train (on patient level)
 - Splitting exercises 
 
-
-# 5. Machine Learning
-- Logistic Regression
-- SVM 
-- Implementing in framework
-
-# 6. Coding Framework
+# 5. Coding Framework
 
 From early in the project I have started working on a Framework for the available dataset. There were many implementations possible for our data-set. In order to create a structure that would be reusable over different iterations I choose for a object orientated model. This would lead to better memory management, and faster implementing new features. 
 
@@ -785,6 +781,15 @@ def model_evaluation(self):
 - Visualsing results (tabulate / )
 - Configloader – parsing model results (sorting results)
 
+
+# 6. Machine Learning
+> The student takes appropriate countermeasures to prevent under- and overfitting and tunes hyperparameters
+
+- Logistic Regression
+- SVM 
+- Implementing in framework
+
+
 # 7. Scrum Tasks
 - Tasks were not always assniged to a name. 
 - Tasks were not always written down in DevOps
@@ -806,23 +811,29 @@ def model_evaluation(self):
 |137|Task|Generate more data from one exercise|Done|Data Science| |0|5-11-2019 10:28
 |52|Issue|Redo the analysis from last year with the new split dataset|Done|Data Science| |0|11-10-2019 10:40
 |78|Task|Converting the exercise data from Brice / Lennart / Rapahel to CSV|Doing|Data Science| |0|11-10-2019 10:20
-|76|Task|Downloading course for Deep Neural Networks|To Do|Data Science| |0|11-10-2019 10:19
+|76|Task|Downloading course for Deep Neural Networks|Done|Data Science| |0|11-10-2019 10:19
 |42|Task|Compare ml results with and without normalized data.|Done|Data Science| |1|30-9-2019 13:01
 |30|Task|Comparing [super cleaned data] vs [normal data] in 2d visualisations|Done|Data Science| |0|30-9-2019 10:21
 |40|Task|Use the created visualisation tool to verify the cleaned data|Done|Data Science| |1|30-9-2019 10:21
 |39|Task|Create tool to visualize the cleaned data|Done|Data Science| |0|30-9-2019 10:18
 |28|Task|Create animated visualisation of Raw data file|Done|Data Science| |0|16-9-2019 09:10
 |15|Task|Eddie|Done|Data Science| |0|6-9-2019 09:48
-
-
-- Taable here 
+ 
 
 # 8. Neural Networks
 - Creating an image from our data-set
 - Adding a 4th layer
 - CNN 
 
-# 9. Personal Development 
+# 9. Conclusion
+> The student compares several models and additionally explains the differences between the models.
+> The student explains why the chosen configuration is reasonable (for instance using relevant literature)
+> The student has visualized the results both quantatively in a plot and where applicable qualitatively using examples.
+
+
+>The student has discussed the results, illustrated by examples (qualitative analysis)and answers the original research questions based on the findings in this study and has tested the outcomes for statistical significance.
+
+# 10. Personal Development 
 ## Datacamp
 
 - [Cleaning Data in Python](/datacamp/)
@@ -837,7 +848,7 @@ def model_evaluation(self):
 - [Deep Learning with TensorFlow 2.0](https://www.udemy.com/course/machine-learning-with-tensorflow-for-business-intelligence/)
 
 
-# 10. Presentations
+# 11. Presentations
 Some of the powerpoint presentations I used whie presenting with a group member. I coudn't find all dates i presented to the group. This list needs to be extended. 
 - [Week 2](/presentations/)
 - [Week 3](/presentations/)
@@ -845,28 +856,44 @@ Some of the powerpoint presentations I used whie presenting with a group member.
 - [Week 14](/presentations/)
 - [External Zoetermeer](/presentations/)
 
-# 11. Wordlist 
+# 12. Wordlist 
 
 | # | Word | Description |
 | --- | --- | --- |
 | 1. | FoB (Flock of Birds) | System to record bones of a patient  
 
-# 12. Failed Attempts 
+# 13. Failed Attempts 
 - 
 
-# 13. Feature of the project
+# 14. Feature of the project
 ## Argumented Reality 
-Bodytracking is possible by using Apple's [ARKit](https://developer.apple.com/augmented-reality/arkit/): 
+Mobile bodytracking is possible by using Apple's [ARKit](https://developer.apple.com/augmented-reality/arkit/): 
 Apple presented a example for their developers on WWDC where they are [bringing people into AR](https://developer.apple.com/videos/play/wwdc2019/607). Implementing this project in wide scale available devices such as the iPhone make the work accesable for normal people. It could also provide large data-sets for physician and datascientist to do research on. Results could also be stored privatly in [HealthKit](https://developer.apple.com/healthkit/)
 
-[_picture from Laurent Brusa - Introducing-ARKit3_](https://multitudes.github.io/2019/07/Introducing-ARKit3.html)
-![People Occlusion](https://multitudes.github.io/assets/img/arkit3/4.png)
-[_picture from Laurent Brusa - Introducing-ARKit3_](https://multitudes.github.io/2019/07/Introducing-ARKit3.html)
-![3D Motion Capture](https://multitudes.github.io/assets/img/arkit3/10.png)
+>![People Occlusion](https://multitudes.github.io/assets/img/arkit3/4.png)
+>[_picture from Laurent Brusa - Introducing-ARKit3_](https://multitudes.github.io/2019/07/Introducing-ARKit3.html)
+
+>![3D Motion Capture](https://multitudes.github.io/assets/img/arkit3/10.png)
+>[_picture from Laurent Brusa - Introducing-ARKit3_](https://multitudes.github.io/2019/07/Introducing-ARKit3.html)
+
+## Neural Networks
+Seeing the power and the avaiablility of high quality pretrained networks i would really like to see what a model could find in a result. 
+
+### Understanding Neural Network Descisions 
+If in the feature a research group would be able to create a high functioning neural network. The descisions of the neural network would be really interesting for physician's. Understanding what the difference is in the data-set could help them: 
+- Verify their current methodolgy is correct, and works like expected
+- Develop new methods to investigate a patient for the disease
+
+There are already developed technology's to get information from a neural network.
+
+>![understanding cnn](https://miro.medium.com/max/960/1*cA9BSngo5Jgzc76CJtKJaA.jpeg)
+>[https://towardsdatascience.com/understanding-your-convolution-network-with-visualizations-a4883441533b](https://towardsdatascience.com/understanding-your-convolution-network-with-visualizations-a4883441533b)
+
+>![ai makes decisions](https://cdn-images-1.medium.com/freeze/max/1000/0*y2TVIsjnZ2cBtRdH?q=20)
+>[https://mc.ai/learning-how-ai-makes-decisions/](https://mc.ai/learning-how-ai-makes-decisions/)
 
 
-
-# 14. Git Commits 
+# 15. Git Commits 
 
 | Commit Hash (clickable) | Date | Branch | Details |
 | --- | --- | --- | --- |
@@ -1001,7 +1028,14 @@ Apple presented a example for their developers on WWDC where they are [bringing 
 [85bdf0a](https://dev.azure.com/DataScienceMinor/Data%20Science/_git/Data%20Science/commit/1f4492c190cb34357565e8add76a0513585bdf0a)|2019-09-09T10:19:56+02:00||Test data
 
 
-# 15. Reflection 
+# 16. Reflection 
+
+My reflection can be found in OneDrive. Teachers and other students have access to this document. 
+
+Own contribution	400 words - STARR
+Learning Objectives	400 words - STARR
+Group Project	400 words - STARR
+
 
 # LINKS TO PROVE : 
 - Github commits 
