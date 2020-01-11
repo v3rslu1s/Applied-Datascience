@@ -390,7 +390,7 @@ As said above we have 5 exercise types for each patient. We appended these combi
 
 | [n frames] | [n frames]  | [n frames] | [n frames] | [n frames] |
 | --- | --- | --- | --- | --- |
-| AB1 | AF1	| EH1 | EL1 | RF1 | 
+| AB1 | AF1|| EH1 | EL1 | RF1 | 
 
 In order to maximize the training dataset, we used a combination of exercise types from a single patient. 
 
@@ -734,6 +734,8 @@ At the launch of the program, for each patient in every patiengroup the original
 
 ![system flowchart](/images/patientuml2.png)
 
+Not every configuration is enheiratable 
+
 ### Configloader
 In order to work easly with multiple configurations I created a system dat is able to export/import configurations to JSON files. The system was able to import a single configuration, or a list of with predefined configurations. Using python's `setattr()` I could overwrite a existing variable with its name as string from a JSON file. 
 
@@ -784,6 +786,35 @@ def model_evaluation(self):
 - Configloader – parsing model results (sorting results)
 
 # 7. Scrum Tasks
+- Tasks were not always assniged to a name. 
+- Tasks were not always written down in DevOps
+
+|||||||||
+| --- | --- | --- | --- | --- |  --- |  --- | --- |
+|ID|Work Item Type|Title|State|Area Path|Tags|Comment Count|Changed Date
+|178|Task|Data: Combinations|Done|Data Science| |0|7-1-2020 14:06
+|77|Task|Read through code of Matlab to see if new information could be added to csv (entropy etc)|Done|Data Science| |0|7-1-2020 13:01
+|73|Task|Convert raw patient data to CSV with Matlab|Done|Data Science| |0|7-1-2020 12:55
+|151|Task|Running all configs with different ml models|Doing|Data Science| |0|16-12-2019 13:41
+|133|Task|Detect abnormal movement|Doing|Data Science| |0|16-12-2019 13:40
+|24|Task|Read Paper|Done|Data Science| |0|16-12-2019 13:17
+|51|Issue|Split all the data in a new trainset and a testset|Done|Data Science| |1|16-12-2019 13:13
+|109|Task|I want to give a personal presentation about the global steps of the project / overfitting / how i solved some of my coding issues|Done|Data Science| |0|16-12-2019 12:40
+|38|Issue|As a student I need to understand the basic steps the last group took|Done|Data Science| |0|16-12-2019 12:38
+|149|Task|Creating configurations [based upon reached goals]|Done|Data Science| |0|2-12-2019 10:24
+|145|Task|ConfigLoader|Done|Data Science| |0|25-11-2019 09:57
+|137|Task|Generate more data from one exercise|Done|Data Science| |0|5-11-2019 10:28
+|52|Issue|Redo the analysis from last year with the new split dataset|Done|Data Science| |0|11-10-2019 10:40
+|78|Task|Converting the exercise data from Brice / Lennart / Rapahel to CSV|Doing|Data Science| |0|11-10-2019 10:20
+|76|Task|Downloading course for Deep Neural Networks|To Do|Data Science| |0|11-10-2019 10:19
+|42|Task|Compare ml results with and without normalized data.|Done|Data Science| |1|30-9-2019 13:01
+|30|Task|Comparing [super cleaned data] vs [normal data] in 2d visualisations|Done|Data Science| |0|30-9-2019 10:21
+|40|Task|Use the created visualisation tool to verify the cleaned data|Done|Data Science| |1|30-9-2019 10:21
+|39|Task|Create tool to visualize the cleaned data|Done|Data Science| |0|30-9-2019 10:18
+|28|Task|Create animated visualisation of Raw data file|Done|Data Science| |0|16-9-2019 09:10
+|15|Task|Eddie|Done|Data Science| |0|6-9-2019 09:48
+
+
 - Taable here 
 
 # 8. Neural Networks
@@ -792,12 +823,27 @@ def model_evaluation(self):
 - CNN 
 
 # 9. Personal Development 
-- Datacamp
-- Lectures
-- Udemy 
+## Datacamp
+
+- [Cleaning Data in Python](/datacamp/)
+- [Importing Data in Python (Part 1)](/datacamp/)
+- [Introduction to Data Visualization in Python](/datacamp/)
+- [Python Data Science Toolbox (Part 1)](/datacamp/)
+- [Python Data Science Toolbox (Part 2)](/datacamp/)
+- [Statistical Thinking in Python (Part 1)](/datacamp/)
+- [Pandas Foundations](/datacamp/)
+
+## Udemy 
+- [Deep Learning with TensorFlow 2.0](https://www.udemy.com/course/machine-learning-with-tensorflow-for-business-intelligence/)
 
 
 # 10. Presentations
+Some of the powerpoint presentations I used whie presenting with a group member. I coudn't find all dates i presented to the group. This list needs to be extended. 
+- [Week 2](/presentations/)
+- [Week 3](/presentations/)
+- [Week 10](/presentations/)
+- [Week 14](/presentations/)
+- [External Zoetermeer](/presentations/)
 
 # 11. Wordlist 
 
@@ -809,7 +855,16 @@ def model_evaluation(self):
 - 
 
 # 13. Feature of the project
-- AR 
+## Argumented Reality 
+Bodytracking is possible by using Apple's [ARKit](https://developer.apple.com/augmented-reality/arkit/): 
+Apple presented a example for their developers on WWDC where they are [bringing people into AR](https://developer.apple.com/videos/play/wwdc2019/607). Implementing this project in wide scale available devices such as the iPhone make the work accesable for normal people. It could also provide large data-sets for physician and datascientist to do research on. Results could also be stored privatly in [HealthKit](https://developer.apple.com/healthkit/)
+
+[_picture from Laurent Brusa - Introducing-ARKit3_](https://multitudes.github.io/2019/07/Introducing-ARKit3.html)
+![People Occlusion](https://multitudes.github.io/assets/img/arkit3/4.png)
+[_picture from Laurent Brusa - Introducing-ARKit3_](https://multitudes.github.io/2019/07/Introducing-ARKit3.html)
+![3D Motion Capture](https://multitudes.github.io/assets/img/arkit3/10.png)
+
+
 
 # 14. Git Commits 
 
@@ -962,6 +1017,6 @@ def model_evaluation(self):
     - What information can a physician get from the smoothness of movement 
     - Left right
     - Man vrouw
-
-![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2Fv3rslu1s%2FApplied-Datascience)
+<!-- 
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2Fv3rslu1s%2FApplied-Datascience) -->
 
