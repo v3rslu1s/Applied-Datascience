@@ -734,11 +734,40 @@ At the launch of the program, for each patient in every patiengroup the original
 
 ![system flowchart](/images/patientuml2.png)
 
+### Configloader
+In order to work easly with multiple configurations I created a system dat is able to export/import configurations to JSON files. The system was able to import a single configuration, or a list of with predefined configurations. Using python's `setattr()` I could overwrite a existing variable with its name as string from a JSON file. 
 
+By using change tracking I was able to create a list of parameters changed in the config class. Using this information I could print a model result table with only the nessesary columns to understand the models result. 
 
-Where each of the groups could be group together with a reference and not by copying the full data-set in memory. 
+```
+  Accuracy  remove_idle    frame_generator      frame_generator_count
+----------  -------------  -----------------  -----------------------
+  0.xxxxxx  False          True                                     3
+  0.xxxxxx  False          True                                     5
+  0.xxxxxx  True           False                                    3
+  0.xxxxxx  True           False                                    5
+```
 
+Exporting a configuration to a file can be done with `ConfigCreator`.`append_config()` this takes the current config class, and appends all its usefull variables to a predefined JSON path. This makes it easy to create many configurations dynamicly. 
 
+```python
+def model_evaluation(self):
+    framecount = [5, 10, 15, 20]
+    framecount_resample = [20, 50, 100, 150]
+
+    self.reset_config() 
+    config.remove_idle = True
+
+    for frame in framecount:
+        config.frames_counts = frame
+        self.append_config()
+
+    self.reset_config() 
+    config.resample_exercise = True
+    for frame in framecount_resample:
+        config.frames_counts = frame
+        self.append_config()
+```
 
 
 - Reading the data-set
@@ -933,3 +962,6 @@ Where each of the groups could be group together with a reference and not by cop
     - What information can a physician get from the smoothness of movement 
     - Left right
     - Man vrouw
+
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2Fv3rslu1s%2FApplied-Datascience)
+
