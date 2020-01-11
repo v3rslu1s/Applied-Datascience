@@ -17,20 +17,21 @@
 | 4.1 | | [Combining exercises](#41-Combining-exercises) |
 | 4.2 | | [Extracting more exercises](#42-Extracting-more-exercises) |
 | 4.3 | | [Occupied euler space](#43-Occupied-euler-space) |
-| 4.4 | | [ Images (pictures) from data ](#44-Images-(pictures)-from-data) |
+| 4.4 | | [ Images (pictures) from exercises ](#44-Images-(pictures)-from-exercises) |
 | 5. | [Coding-Framework](#5-Coding-Framework) | 
 | 6. | [Machine Learning](#6-Machine-Learning) | 
-| 7. | [Scrum Tasks](#7-Scrum-Tasks) | 
-| 8. | [Neural Networks](#8-Neural-Networks) | 
-| 9. | [Conclusion](#9-Conclusion) | 
-| 10. | [Personal Development](#10-Personal-Development) | 
-| 11. | [Presentations](#11-Presentations) | 
-| 12. | [Wordlist](#12-Wordlist) | 
-| 13. | [Failed Attempts](#13-Failed-Attempts) | 
-| 14. | [Feature of the project](#14-Feature-of-the-project) | 
+| 7. | [Neural Networks](#7-Neural-Networks) | 
+| 8. | [Conclusion](#8-Conclusion) | 
+| 9. | [Personal Development](#9-Personal-Development) | 
+| 10. | [Presentations](#10-Presentations) | 
+| 11. | [Wordlist](#11-Wordlist) | 
+| 12. | [Failed Attempts](#12-Failed-Attempts) | 
+| 13. | [Future of the project](#13-Future-of-the-project) | 
+| 14. | [Scrum Tasks](#14-Scrum-Tasks) | 
 | 15. | [Git Commits](#15-Git-Commits) | | A list of all git commits created by me (including url's)
 | 16. | [Reflection](#16-Reflection) | 
- 
+
+
 # 1. Research
 We are doing research for the LUMC in a collaboration with the Laboratory of Kinematics and Neuromechanics (LK&N). The LUMC has requested known patient for muscle torment for a special medical recording to the hospital. The patients are pre-selected by specialized physicians in different levels of torment. Every patient was seated into a special recording room where a physician attached multiple sensors from the Flock of Birds (FOB) recording system on bones of the patient. The patient did multiple types of exercises in most cases multiple times. 
 
@@ -790,7 +791,80 @@ def model_evaluation(self):
 - Implementing in framework
 
 
-# 7. Scrum Tasks
+# 7. Neural Networks
+- Creating an image from our data-set
+- Adding a 4th layer
+- CNN 
+
+# 8. Conclusion
+> The student compares several models and additionally explains the differences between the models.
+> The student explains why the chosen configuration is reasonable (for instance using relevant literature)
+> The student has visualized the results both quantatively in a plot and where applicable qualitatively using examples.
+
+
+>The student has discussed the results, illustrated by examples (qualitative analysis)and answers the original research questions based on the findings in this study and has tested the outcomes for statistical significance.
+
+# 9. Personal Development 
+## Datacamp
+
+- [Cleaning Data in Python](/datacamp/)
+- [Importing Data in Python (Part 1)](/datacamp/)
+- [Introduction to Data Visualization in Python](/datacamp/)
+- [Python Data Science Toolbox (Part 1)](/datacamp/)
+- [Python Data Science Toolbox (Part 2)](/datacamp/)
+- [Statistical Thinking in Python (Part 1)](/datacamp/)
+- [Pandas Foundations](/datacamp/)
+
+## Udemy 
+- [Deep Learning with TensorFlow 2.0](https://www.udemy.com/course/machine-learning-with-tensorflow-for-business-intelligence/)
+
+
+# 10. Presentations
+Some of the powerpoint presentations I used whie presenting with a group member. I coudn't find all dates i presented to the group. This list needs to be extended. 
+- [Week 2](/presentations/)
+- [Week 3](/presentations/)
+- [Week 10](/presentations/)
+- [Week 14](/presentations/)
+- [External Zoetermeer](/presentations/)
+
+# 11. Wordlist 
+
+| # | Word | Description |
+| --- | --- | --- |
+| 1. | FoB (Flock of Birds) | System to record bones of a patient  
+
+# 12. Failed Attempts 
+- 
+
+# 13. Future of the project
+## Argumented Reality 
+Mobile bodytracking is possible by using Apple's [ARKit](https://developer.apple.com/augmented-reality/arkit/): 
+Apple presented a example for their developers on WWDC where they are [bringing people into AR](https://developer.apple.com/videos/play/wwdc2019/607). Implementing this project in wide scale available devices such as the iPhone make the work accesable for normal people. It could also provide large data-sets for physician and datascientist to do research on. Results could also be stored privatly in [HealthKit](https://developer.apple.com/healthkit/)
+
+>![People Occlusion](https://multitudes.github.io/assets/img/arkit3/4.png)
+>[_picture from Laurent Brusa - Introducing-ARKit3_](https://multitudes.github.io/2019/07/Introducing-ARKit3.html)
+
+>![3D Motion Capture](https://multitudes.github.io/assets/img/arkit3/10.png)
+>[_picture from Laurent Brusa - Introducing-ARKit3_](https://multitudes.github.io/2019/07/Introducing-ARKit3.html)
+
+## Neural Networks
+Seeing the power and the avaiablility of high quality pretrained networks i would really like to see what a model could find in a result. 
+
+### Understanding Neural Network Descisions 
+If in the feature a research group would be able to create a high functioning neural network. The descisions of the neural network would be really interesting for physician's. Understanding what the difference is in the data-set could help them: 
+- Verify their current methodolgy is correct, and works like expected
+- Develop new methods to investigate a patient for the disease
+
+There are already developed technology's to get information from a neural network.
+
+>![understanding cnn](https://miro.medium.com/max/960/1*cA9BSngo5Jgzc76CJtKJaA.jpeg)
+>[https://towardsdatascience.com/understanding-your-convolution-network-with-visualizations-a4883441533b](https://towardsdatascience.com/understanding-your-convolution-network-with-visualizations-a4883441533b)
+
+>![ai makes decisions](https://cdn-images-1.medium.com/freeze/max/1000/0*y2TVIsjnZ2cBtRdH?q=20)
+>[https://mc.ai/learning-how-ai-makes-decisions/](https://mc.ai/learning-how-ai-makes-decisions/)
+
+
+# 14. Scrum Tasks
 - Tasks were not always assniged to a name. 
 - Tasks were not always written down in DevOps
 
@@ -819,79 +893,6 @@ def model_evaluation(self):
 |28|Task|Create animated visualisation of Raw data file|Done|Data Science| |0|16-9-2019 09:10
 |15|Task|Eddie|Done|Data Science| |0|6-9-2019 09:48
  
-
-# 8. Neural Networks
-- Creating an image from our data-set
-- Adding a 4th layer
-- CNN 
-
-# 9. Conclusion
-> The student compares several models and additionally explains the differences between the models.
-> The student explains why the chosen configuration is reasonable (for instance using relevant literature)
-> The student has visualized the results both quantatively in a plot and where applicable qualitatively using examples.
-
-
->The student has discussed the results, illustrated by examples (qualitative analysis)and answers the original research questions based on the findings in this study and has tested the outcomes for statistical significance.
-
-# 10. Personal Development 
-## Datacamp
-
-- [Cleaning Data in Python](/datacamp/)
-- [Importing Data in Python (Part 1)](/datacamp/)
-- [Introduction to Data Visualization in Python](/datacamp/)
-- [Python Data Science Toolbox (Part 1)](/datacamp/)
-- [Python Data Science Toolbox (Part 2)](/datacamp/)
-- [Statistical Thinking in Python (Part 1)](/datacamp/)
-- [Pandas Foundations](/datacamp/)
-
-## Udemy 
-- [Deep Learning with TensorFlow 2.0](https://www.udemy.com/course/machine-learning-with-tensorflow-for-business-intelligence/)
-
-
-# 11. Presentations
-Some of the powerpoint presentations I used whie presenting with a group member. I coudn't find all dates i presented to the group. This list needs to be extended. 
-- [Week 2](/presentations/)
-- [Week 3](/presentations/)
-- [Week 10](/presentations/)
-- [Week 14](/presentations/)
-- [External Zoetermeer](/presentations/)
-
-# 12. Wordlist 
-
-| # | Word | Description |
-| --- | --- | --- |
-| 1. | FoB (Flock of Birds) | System to record bones of a patient  
-
-# 13. Failed Attempts 
-- 
-
-# 14. Feature of the project
-## Argumented Reality 
-Mobile bodytracking is possible by using Apple's [ARKit](https://developer.apple.com/augmented-reality/arkit/): 
-Apple presented a example for their developers on WWDC where they are [bringing people into AR](https://developer.apple.com/videos/play/wwdc2019/607). Implementing this project in wide scale available devices such as the iPhone make the work accesable for normal people. It could also provide large data-sets for physician and datascientist to do research on. Results could also be stored privatly in [HealthKit](https://developer.apple.com/healthkit/)
-
->![People Occlusion](https://multitudes.github.io/assets/img/arkit3/4.png)
->[_picture from Laurent Brusa - Introducing-ARKit3_](https://multitudes.github.io/2019/07/Introducing-ARKit3.html)
-
->![3D Motion Capture](https://multitudes.github.io/assets/img/arkit3/10.png)
->[_picture from Laurent Brusa - Introducing-ARKit3_](https://multitudes.github.io/2019/07/Introducing-ARKit3.html)
-
-## Neural Networks
-Seeing the power and the avaiablility of high quality pretrained networks i would really like to see what a model could find in a result. 
-
-### Understanding Neural Network Descisions 
-If in the feature a research group would be able to create a high functioning neural network. The descisions of the neural network would be really interesting for physician's. Understanding what the difference is in the data-set could help them: 
-- Verify their current methodolgy is correct, and works like expected
-- Develop new methods to investigate a patient for the disease
-
-There are already developed technology's to get information from a neural network.
-
->![understanding cnn](https://miro.medium.com/max/960/1*cA9BSngo5Jgzc76CJtKJaA.jpeg)
->[https://towardsdatascience.com/understanding-your-convolution-network-with-visualizations-a4883441533b](https://towardsdatascience.com/understanding-your-convolution-network-with-visualizations-a4883441533b)
-
->![ai makes decisions](https://cdn-images-1.medium.com/freeze/max/1000/0*y2TVIsjnZ2cBtRdH?q=20)
->[https://mc.ai/learning-how-ai-makes-decisions/](https://mc.ai/learning-how-ai-makes-decisions/)
-
 
 # 15. Git Commits 
 
