@@ -784,7 +784,46 @@ def model_evaluation(self):
 
 
 # 6. Machine Learning
+
+Our project is a continuation from a previous research group. This group worked with the same data as this iteration. [Their main goal was to find the most effective machine learning method for the dataset.](https://github.com/Lukelumia/Applied-Data-Science#2-onderzoek) Based on their [research](https://github.com/Lukelumia/Applied-Data-Science#632-classifier-55-tm-58-final-classifier) we are using logistic regression for our data. 
+
+
+
+
+> The student has supported their model selection with references from literature.
+
+The chapters above are explaining the techinical details of different data transformations we came up with. These options were only introduced after we as a group decided to implement this.
+
+## Cleaning 
+| Method name | Details | Benefits |
+| --- | --- | --- |
+| remove_idle | Attempts to find idle parts and remove these from the used data-set | Creates a cleaner data-set with only the exercise data. This data should in theory contain the information on witch it should find the correct patientgroup. |
+| column_index | Switches between different configurations of columns used to create the data-set | Some bones might have less value than other bones. Switching through a list of different combination of bones could help find important or unimportant features in the dataset. |    
+| normalise | Normalizes values in data-set between 0 and 1 | Helps to prevent the model from thinking certain values are more important than others |    
+| resample_exercise | Resamples the full exercise to n frames. The whole resampled exercise can be used to create a dataset | Instead of using a selection of frames (for example 5 picked from 100) we resample the whole exercise to the number of frames we want. In this case none of the global movements are lost
+
+## Creation of input data
+| Method Name | Details | 
+| --- | --- |
+| default | Combines 5 exercises types from a single patient. A selection of each exercise is made to get the same number of frames for all patients | Creates 
+| frame_generator | Takes n frames before and after the by default selected frames in a exercise |
+
+> The student explains why the chosen configuration is reasonable (for instance using relevant literature)
+
+## Underfitting
+
+In our data-set we were extra cautious for underfitting. From the previous group we have learned that the amount of data is not that much. The sensors from the FoB system are not 
+
+
+
 > The student takes appropriate countermeasures to prevent under- and overfitting and tunes hyperparameters
+- preventing underfitting by creating more entries per patient
+- overfitting not likely
+
+> The student compares several models and additionally explains the differences between the models.
+
+> The student has visualized the results both quantatively in a plot and where applicable qualitatively using examples.
+
 
 - Logistic Regression
 - SVM 
