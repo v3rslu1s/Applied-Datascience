@@ -33,29 +33,19 @@
 
 
 # 1. Research
+
+### Context
 We are doing research for the LUMC in a collaboration with the Laboratory of Kinematics and Neuromechanics (LK&N). The LUMC has requested known patient for muscle torment for a special medical recording to the hospital. The patients are pre-selected by specialized physicians in different levels of torment. Every patient was seated into a special recording room where a physician attached multiple sensors from the Flock of Birds (FOB) recording system on bones of the patient. The patient did multiple types of exercises in most cases multiple times. 
 
-This leaves us with a data-set of labeled patient recordings. The labels are created an put on the data by the LUMC physicians and based upon the type of exercise and the amount of torment in the muscles. 
+### Data
+This leaves us with a data-set of labeled kinematic patient recordings. The labels are created an put on the data by the LUMC physicians and based upon the type of exercise and the amount of torment in the muscles. 
 
+### Research
 Our research is about using machine learning techniques to classify feature patients based on the previous classification of the LUMC physicians. 
 
 Research question: 
 > **To what extend and in what way, can different (unsupervised) data science techniques be used on kinematic recordings to contribute to a more valid and more reliable diagnosis, made by a doctor, on shoulder disability.**
-
-```
-The projectgroup of 19/20 is not the first group who contributes to this research. Two 
-Result from last year, based on allot of assumptions
-We tried to encrease teh quality of the data
-The result of the logistics regression did get better or worse 
-
-Conclusion about of facts, not assumptions (dataset)
-
-**result** model is worse because of:
-- not enough data
-- previous group had to many assumptions 
-
-- Verify results by creating a visualistion of the model learning process. 
-```
+ 
 
 # 1.1 Previous groups 
 The projectgroup of 19/20 is not the first group who contributed to this research. The previous research group that took an interest in this subject has done allot of work to get us started quickly. [https://github.com/Lukelumia/Applied-Data-Science]. They mainly did research to determent what type of machine learning model would fit the data-set produced by the LUMC the best. They created a way to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the data-set. 
@@ -63,7 +53,7 @@ The projectgroup of 19/20 is not the first group who contributed to this researc
 After reading their full reports the 19/20 project group had some doubts about certain assumptions the group made. Based on this information we contacted the LUMC for clarification. This led to the LUMC sharing more labels on our data-set in order to take some doubts / possible assumptions about the labels of the data-set from the previous group away. This still leaves allot of information to processes, and domain knowledge to gain. The verification of their process took almost the full time of the minor. 
 
 # 1.2 Project Management
-For our research we had to use SCRUMM. This approach is not commonly used for research projects. However in our project group it worked good. After a few weeks reading / understanding the work of the previous group we were able sub questions (issues) building up to a main question. Each issue was built upon multiple tasks that were shared over the project group. All of this was implemented in Azure Dev Ops.  
+For our research we had to use SCRUM. This approach is not commonly used for research projects. However in our project group it worked good. After a few weeks reading / understanding the work of the previous group we were able sub questions (issues) building up to a main question. Each issue was built upon multiple tasks that were shared over the project group. All of this was implemented in Azure Dev Ops.  
 
 # 2. Data-set
 Physicians requested patients back in 4 groups. 
@@ -293,6 +283,9 @@ else:
 
 
 # 3.2 Visualising converted data as 2D 
+TODO: 
+
+
 # 3.3 t-SNE
 
 Our data-set is so large, and has so many features that it was not possible to visualise the different catagory's in one visualisation that is still readable.
@@ -546,7 +539,7 @@ for exercise_combination in self.data:
 ```
 
 # 4.3 Occupied euler space
-
+TODO:
 
 # 4.4 Images (pictures) from exercises 
 
@@ -677,16 +670,7 @@ def lowpassfilter(self, dt, RC):
 
     return _np_array
 ```
-
-```
-- Five exercises 
-- 5 splits of the data
-    - Combining multiple exercises from one patient
-    - More than 5 splits
-- Combining exercises for patients
-- 360 euler space
-- Creating images from the data 
-```
+  
 
 ## Cleaning our data-set
 - Removing idle 
@@ -700,7 +684,9 @@ From early in the project I have started working on a Framework for the availabl
 
 ![patient diagram uml](/images/patientuml1.png)
 
-Because of this structure it was very easy to read all of the information from files into memory. Where is object has its own place in memory. If patients need to be rotated or searched through python would only need the pointer to this place in memory instead of reading the full csv again, or moving around large arrays in memory. 
+Because of this structure it was very easy to read all of the information from files into memory. Where is object has its own place in memory. If patients need to be rotated or searched through python would only need the pointer to this place in memory instead of reading the full csv again, or moving around large arrays in memory. The framework was created to be multi-os supported (Windows/Linux/Mac) and supports multi-threading for the loading/converting of the data. 
+ 
+
 
 ## Configurations
 
@@ -768,26 +754,9 @@ def model_evaluation(self):
         self.append_config()
 ```
 
-
-- Reading the data-set
-- UML 
-- Benefits 
-- Multi-os support
-- Multi-threading
-- Memory management
-- Configurations
-- Configuration loader
-- Datalogger
-- Statistics
-- Visualsing results (tabulate / )
-- Configloader – parsing model results (sorting results)
-
-
 # 6. Machine Learning
 
 Our project is a continuation from a previous research group. This group worked with the same data as this iteration. [Their main goal was to find the most effective machine learning method for the dataset.](https://github.com/Lukelumia/Applied-Data-Science#2-onderzoek) Based on their [research](https://github.com/Lukelumia/Applied-Data-Science#632-classifier-55-tm-58-final-classifier) we are using logistic regression for our data. 
-
-
 
 
 > The student has supported their model selection with references from literature.
@@ -812,22 +781,24 @@ The chapters above are explaining the techinical details of different data trans
 
 ## Underfitting
 
-In our data-set we were extra cautious for underfitting. From the previous group we have learned that the amount of data is not that much. The sensors from the FoB system are not 
+In our data-set we were extra cautious for underfitting. From the previous group we have learned that the amount of data is not that much. The sensors from the FoB system do not have a high update frequenty. This means the amount of frames for each of the exercises are limited. 
+
+Because of this we have attempted to create a large as possible data-set. Without reincerting the same rows twice. The technical explanation above explains how a single single patient could have a combination of different exercises to enrich the data-set. 
 
 
+> The student takes appropriate countermeasures to prevent under- and overfitting and tunes hyperparameters 
 
-> The student takes appropriate countermeasures to prevent under- and overfitting and tunes hyperparameters
-- preventing underfitting by creating more entries per patient
-- overfitting not likely
+## Different models
+
+For educational purposes we have attempted to run a single configuration of the data through different machine learning models. The results from this were not better (as expected, see result from previous group). Because of this we decided not to spend any more time on basic models, but focus on the formatting/cleaning of the data.
 
 > The student compares several models and additionally explains the differences between the models.
 
-> The student has visualized the results both quantatively in a plot and where applicable qualitatively using examples.
+## Results 
 
+From running the configurations we have different results. Below you can see the best / worse results and their configurations. In order to make a calculated difference between results we choose not to only use Accuracy but also MCC LogLoss RSME RMSLE. 
 
-- Logistic Regression
-- SVM 
-- Implementing in framework
+### Lowest Scores
 
 ```
   Accuracy       MCC    LogLoss      RSME     RMSLE  remove_idle    frame_generator      frame_generator_count    column_index    frames_counts  normalise      remove_idle_split_count  resample_exercise    default
@@ -840,6 +811,7 @@ In our data-set we were extra cautious for underfitting. From the previous group
   0.44578   0.195909    3.68422  0.931529  0.319142  False          True                                     3               1               15  True                                 3  False                False
   0.44763   0.196912    3.464    0.924553  0.316587  True           True                                     3               0               15  True                                 3  False                False
 ```
+### Highes scores
 ```
   Accuracy       MCC    LogLoss      RSME     RMSLE  remove_idle    frame_generator      frame_generator_count    column_index    frames_counts  normalise      remove_idle_split_count  resample_exercise    default
 ----------  --------  ---------  --------  --------  -------------  -----------------  -----------------------  --------------  ---------------  -----------  -------------------------  -------------------  ---------
@@ -875,6 +847,42 @@ In our data-set we were extra cautious for underfitting. From the previous group
 
 
 >The student has discussed the results, illustrated by examples (qualitative analysis)and answers the original research questions based on the findings in this study and has tested the outcomes for statistical significance.
+
+The projectgroup of 19/20 is not the first group who contributes to this research. The previous groups attempted to solve the same issue. However the results for this years research is much lower in accuracy than the previous years. This is because of the assumptions the previous group made. 
+
+## Unlabeled data
+The previous group did not have labels on their exercises. A patient was known to be in a specific patientgroup. However it was unknow what exercises the patient actually did. When this years projectgroup researched the dataset with labels received from the LUMC mistakes from the previous group were found. 
+
+In certain cases the phasicians choose to make extra recordings from patients. These extra recordings were labeled as default recordings by visual inspection. So could tying shoelaces be labeled as doing a AF exercise. 
+
+These recordings were only done by specific patient groups. This could potentially bias the model into learning that tying shoelaces always fits to patient group x. 
+
+## Datacleaning 
+This year's research group focused much more on the cleaning of the dataset. So that only the actual exercise is left, and shaped in such an way that each exercise starts and ends around the same relative exercise time. 
+
+## Data formatting
+We have attempted to load in as much of the data as possible. This means leaving as few features out of the dataset. And keeping the original movement as a whole. 
+
+## Results 
+We now understand that the model is very sensitive to noise data. Patient groups contained in the past certain characteristic movements/exercises on witch the model possibly has attached their decicion making. Instead of looking at the underlying issue (for example the painfull arc) it possibly looked at the differences in exercise. Different physician recorded different patient groups. Removing the physician characteristic from the data set resulted into a worse result. 
+
+The result could also be worse because of the lack of data. Cleaning the dataset and dropping certain exercises because of relevance causes a drop of input values. More recordings from the LUMC could contribute to a better performing model. 
+<!-- 
+The results from this years research group were much lower than the previous group. T
+
+Conclusion about of facts, not assumptions (dataset)
+
+**result** model is worse because of:
+- not enough data
+- previous group had to many assumptions 
+
+- Verify results by creating a visualistion of the model learning process. 
+
+The projectgroup of 19/20 is not the first group who contributes to this research. Two 
+Result from last year, based on allot of assumptions
+We tried to encrease teh quality of the data
+The result of the logistics regression did get better or worse  -->
+
 
 # 9. Personal Development 
 ## Datacamp
