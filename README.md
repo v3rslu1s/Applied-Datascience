@@ -800,6 +800,10 @@ def model_evaluation(self):
   0.44578   0.195909    3.68422  0.931529  0.319142  True           True                                     3               1               15  True                                 3  False                False
   0.44578   0.195909    3.68422  0.931529  0.319142  False          True                                     3               1               15  True                                 3  False                False
   0.44763   0.196912    3.464    0.924553  0.316587  True           True                                     3               0               15  True                                 3  False                False
+```
+```
+  Accuracy       MCC    LogLoss      RSME     RMSLE  remove_idle    frame_generator      frame_generator_count    column_index    frames_counts  normalise      remove_idle_split_count  resample_exercise    default
+----------  --------  ---------  --------  --------  -------------  -----------------  -----------------------  --------------  ---------------  -----------  -------------------------  -------------------  ---------
   0.684393  0.59692     3.29152  0.564867  0.163033  False          False                                    7               1                5  False                                3  False                False
   0.684393  0.59692     3.29152  0.564867  0.163033  False          False                                    7               1                5  False                                5  False                False
   0.684393  0.59692     3.29152  0.564867  0.163033  False          False                                    7               1                5  False                                5  False                True
