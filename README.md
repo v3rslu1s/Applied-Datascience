@@ -391,9 +391,9 @@ self.dataframe = self.dataframe[config.columns].iloc[frames]
 Creating a single patient 
 As said above we have 5 exercise types for each patient. We appended these combinations together in order to create a single row in our dataset. 
 
-| [n frames] | [n frames]  | [n frames] | [n frames] | [n frames] |
+| [n frames] | [n frames] | [n frames] | [n frames] | [n frames] |
 | --- | --- | --- | --- | --- |
-| AB1 | AF1|| EH1 | EL1 | RF1 | 
+| AB1 | AF1 | EH1 | EL1 | RF1 | 
 
 In order to maximize the training dataset, we used a combination of exercise types from a single patient. 
 
@@ -789,6 +789,35 @@ def model_evaluation(self):
 - Logistic Regression
 - SVM 
 - Implementing in framework
+
+```
+  Accuracy       MCC    LogLoss      RSME     RMSLE  remove_idle    frame_generator      frame_generator_count    column_index    frames_counts  normalise      remove_idle_split_count  resample_exercise    default
+----------  --------  ---------  --------  --------  -------------  -----------------  -----------------------  --------------  ---------------  -----------  -------------------------  -------------------  ---------
+  0.433757  0.18139     4.0174   0.919663  0.312629  True           True                                     5               0               15  True                                 3  False                False
+  0.433757  0.18139     4.0174   0.919663  0.312629  False          True                                     5               0               15  True                                 3  False                False
+  0.438382  0.186935    4.21215  0.929168  0.317292  True           True                                     5               1               15  True                                 3  False                False
+  0.438382  0.186935    4.21215  0.929168  0.317292  False          True                                     5               1               15  True                                 3  False                False
+  0.44578   0.195909    3.68422  0.931529  0.319142  True           True                                     3               1               15  True                                 3  False                False
+  0.44578   0.195909    3.68422  0.931529  0.319142  False          True                                     3               1               15  True                                 3  False                False
+  0.44763   0.196912    3.464    0.924553  0.316587  True           True                                     3               0               15  True                                 3  False                False
+  0.684393  0.59692     3.29152  0.564867  0.163033  False          False                                    7               1                5  False                                3  False                False
+  0.684393  0.59692     3.29152  0.564867  0.163033  False          False                                    7               1                5  False                                5  False                False
+  0.684393  0.59692     3.29152  0.564867  0.163033  False          False                                    7               1                5  False                                5  False                True
+  0.686705  0.574977    1.4705   0.559727  0.165931  True           False                                    7               1               15  True                                 5  False                True
+  0.687861  0.598815    3.26682  0.561789  0.16215   False          False                                    7               0                5  False                                3  False                False
+  0.687861  0.598815    3.26682  0.561789  0.16215   False          False                                    7               0                5  False                                5  False                False
+  0.687861  0.598815    3.26682  0.561789  0.16215   False          False                                    7               0                5  False                                5  False                True
+  0.690173  0.584366    1.47415  0.556621  0.163916  False          False                                    7               1                5  True                                 3  False                False
+  0.690173  0.584366    1.47415  0.556621  0.163916  False          False                                    7               1                5  True                                 5  False                False
+  0.690173  0.584366    1.47415  0.556621  0.163916  False          False                                    7               1                5  True                                 5  False                True
+  0.691329  0.583028    1.4858   0.555581  0.165631  False          False                                    7               0               15  True                                 3  False                False
+  0.691329  0.583028    1.4858   0.555581  0.165631  False          False                                    7               0               15  True                                 5  False                False
+  0.691329  0.583028    1.4858   0.555581  0.165631  False          False                                    7               0               15  True                                 5  False                True
+  0.695954  0.5923      1.39075  0.551404  0.160698  False          False                                    7               0                5  True                                 3  False                False
+  0.695954  0.5923      1.39075  0.551404  0.160698  False          False                                    7               0                5  True                                 5  False                False
+```
+
+
 
 
 # 7. Neural Networks
