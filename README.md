@@ -303,7 +303,7 @@ Our data contains movement of a patient. From this movement we want to determen 
 |Logistic Regression|0.690173|0.584366|1.47405|0.556621|0.163916|
 |KMeans|0.720231|0.060499|-------|0.905985|0.392598|
 
-#### Configuring a Model
+### Configuring a Model
 
 |||||
 | --- | --- | --- | --- | --- |
@@ -311,11 +311,35 @@ Our data contains movement of a patient. From this movement we want to determen 
 | max_iter | 2000 | Capping the maximum amount of iterations. This to prevent the model running for too long, since we tested with multiple models this helped us to faster test different configurations. |
 | multi_class | auto | Using sklearns default setting |
 
-#### Training a model
-#### Evaluating a model
-#### Visualizing the outcome of a model (explanatory)
+### Training a model
 
+When training the model with single instances of a patient, the results were always very low. This is most likely because of underfitting. [A solution to underfitting is the creation of extra frames for each patient](#41-Combining-exercises). 
 
+I have not found other proceedings we could have taken to increase the datasize. Lowering the amount of test records did not feel like a sensible solution. 
+
+### Evaluating a model
+
+For model evaluation I have implemented a test / train set for the training. The evaluation of the test test is what defines the accuracy over the whole model. This prevents the model from overfitting, otherwise the combined result (accuracy) would have been very low. 
+
+The creation of the test set also applies to full patients instead of single exercise combinations. This MUST be done since we combine different parts of combinations. Exercises are combined to create a large amount of combinations. This means if we do not split the train / test set on patient level a part of the exercise could already be known / learned to the model. 
+
+[To implement this feature we have created a list of patient id's who have been 'randomly' selected to be part of the test group. **Link to github commit**](https://dev.azure.com/DataScienceMinor/Data%20Science/_git/Data%20Science/commit/326c50dbd7da01f6264818c96b60d38a8dee6d07)
+
+Next to this we have added multiple values to check the evaluation of the model, see the table in **Configuring a Model**
+
+### Visualizing the outcome of a model (explanatory)
+
+We have created a table to output the results of the model. This makes it easy to compare values over different configurations. 
+   
+```
+  Accuracy       MCC    LogLoss      RSME     RMSLE  remove_idle    frame_generator      frame_generator_count    column_index    frames_counts  normalise      remove_idle_split_count  resample_exercise    default
+----------  --------  ---------  --------  --------  -------------  -----------------  -----------------------  --------------  ---------------  -----------  -------------------------  -------------------  ---------
+  0.684393  0.59692     3.29152  0.564867  0.163033  False          False                                    7               1                5  False                                3  False                False
+  0.684393  0.59692     3.29152  0.564867  0.163033  False          False                                    7               1                5  False                                5  False                False
+  0.684393  0.59692     3.29152  0.564867  0.163033  False          False                                    7               1                5  False                                5  False                True
+  0.686705  0.574977    1.4705   0.559727  0.165931  True           False                                    7               1               15  True                                 5  False                True
+  0.687861  0.598815    3.26682  0.561789  0.16215   False          False                                    7               0                5  False                                3  False                False
+```
 
 
 
