@@ -8,6 +8,10 @@
 | 1.2 | | [Project Management](#12-Project-Management) | 
 
 
+## More details/missing information can be found in the technical documentation of the project.
+[Applied-DataScience/Technical Documentation](/TechnicalDocumentation.md)
+
+
 # 1. Research
 
 ### Context
@@ -23,6 +27,9 @@ Our research is about using machine learning techniques to classify feature pati
 > **To what extend and in what way, can different (unsupervised) data science techniques be used on kinematic recordings to contribute to a more valid and more reliable diagnosis, made by a doctor, on shoulder disability.**
 
 #### Subquestions
+
+TODO: 
+
 
 # 1.1 Previous groups 
 The projectgroup of 19/20 is not the first group who contributed to this research. The previous research group that took an interest in this subject has done allot of work to get us started quickly. [https://github.com/Lukelumia/Applied-Data-Science](https://github.com/Lukelumia/Applied-Data-Science). They mainly did research to determent what type of machine learning model would fit the data-set produced by the LUMC the best. They created a way to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the data-set. 
@@ -82,6 +89,7 @@ _Bones recored by FoB:_
 
 <details>
   <summary>_example patient exercise format (.csv):_</summary>
+
 ```
    thorax_r_x_ext  thorax_r_y_ax  thorax_r_z_lat  clavicula_r_y_pro  clavicula_r_z_ele  ...  humerus_l_z_ele  humerus_l_y_ax  elbowangle_l  28  29
 0        6.485206      -4.220661       -1.233433          -15.00546           10.47724  ...         14.79337        46.02733        399.8214   0   0
