@@ -427,6 +427,10 @@ We now understand that the model is very sensitive to noise data. Patient groups
 
 The result could also be worse because of the lack of data. Cleaning the dataset and dropping certain exercises because of relevance causes a drop of input values. More recordings from the LUMC could contribute to a better performing model. 
 
+## More details/missing information can be found in the technical documentation of the project.
+[Applied-DataScience/Technical Documentation](/TechnicalDocumentation.md)
+
+
 # 7. Future of the project
 ## Argumented Reality 
 Mobile bodytracking is possible by using Apple's [ARKit](https://developer.apple.com/augmented-reality/arkit/): 
