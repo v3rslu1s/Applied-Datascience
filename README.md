@@ -299,7 +299,7 @@ Our data contains movement of a patient. From this movement we want to determen 
  
 
 | Model | Accuracy | MCC | LogLoss | RSME | RMSLE |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 |Logistic Regression|0.690173|0.584366|1.47405|0.556621|0.163916|
 |KMeans|0.720231|0.060499|-------|0.905985|0.392598|
 
