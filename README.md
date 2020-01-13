@@ -32,7 +32,7 @@
 We are doing research for the LUMC in a collaboration with the Laboratory of Kinematics and Neuromechanics (LK&N). The LUMC has requested known patient for muscle torment for a special medical recording to the hospital. The patients are pre-selected by specialized physicians in different levels of torment. Every patient was seated into a special recording room where a physician attached multiple sensors from the Flock of Birds (FOB) recording system on bones of the patient. The patient did multiple types of exercises in most cases multiple times. 
 
 ### Data
-This leaves us with a data-set of labeled kinematic patient recordings. The labels are created an put on the data by the LUMC physicians and based upon the type of exercise and the amount of torment in the muscles. 
+This leaves us with a data-set of labeled kinematic patient recordings. The labels are created by the LUMC physicians and based upon the type of exercise and the amount of torment in the muscles. 
 
 ### Research
 Our research is about using machine learning techniques to classify feature patients based on the previous classification of the LUMC physicians. 
@@ -46,18 +46,18 @@ Our research is about using machine learning techniques to classify feature pati
 - How can kinematic recordings be reshaped(organized) into a valid/reliable data set. 
 - What other datascience techniques could we use and (how) can they improve the classification 
 - What parts of the kinematic recordings are contributing? 
-- Do we validate the reliability of the diagnosis the Datacience techniques made. 
+- Do we validate the reliability of the diagnosis the Datascience techniques made. 
 - How is our outcome contributing to the medical domain?(classification/research) 
 
 # 1.1 Previous groups 
-The projectgroup of 19/20 is not the first group who contributed to this research. [The previous research group](https://github.com/Lukelumia/Applied-Data-Science) that took an interest in this subject has done allot of work to get us started quickly. They mainly did research to determent what type of machine learning model would fit the data-set produced by the LUMC the best. They created a way to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the data-set. 
-
-After reading their full reports the 19/20 project group had some doubts about certain assumptions the group made. Based on this information we contacted the LUMC for clarification. This led to the LUMC sharing more labels on our data-set in order to take some doubts / possible assumptions about the labels of the data-set from the previous group away. This still leaves allot of information to processes, and domain knowledge to gain. The verification of their process took almost the full time of the minor. 
+The projectgroup of 19/20 is not the first group who contributed to this research. [The previous research group](https://github.com/Lukelumia/Applied-Data-Science) that took an interest in this subject has done allot of research to get us started quickly. They mainly did research to determent what type of machine learning model would fit the data-set produced by the LUMC the best. They came up with a method to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the data-set. After reading their full reports the 19/20 project group had some doubts about certain assumptions the group made. Based on this information we contacted the LUMC for clarification. This led to the LUMC sharing more labels on our data-set in order to take some doubts / possible assumptions about the labels of the data-set from the previous group away. This still leaves allot of information to processes, and domain knowledge to gain. The verification of their process took almost the full time of the minor. 
 
 # 1.2 Project Management
-For our research we had to use SCRUM. This approach is not commonly used for research projects. However in our project group it worked good. After a few weeks reading / understanding the work of the previous group we were able sub questions (issues) building up to a main question. Each issue was built upon multiple tasks that were shared over the project group. All of this was implemented in Azure Dev Ops.  
+For our research we used SCRUM. This approach is not commonly used for research projects. However in our project group it worked good. After a few weeks reading / understanding the work of the previous group we were able sub questions (issues) building up to a main question. Each issue was built upon multiple tasks that were shared over the project group. All of this was implemented in Azure Dev Ops.  
 
 All my assigned task can be found at [Scrum Tasks](#9-Scrum-Tasks)
+
+
 # 2. Data-set
 Physicians requested patients back in 4 groups. 
 Each patient was requested to do multiple exercises: 
@@ -70,11 +70,9 @@ Each patient was requested to do multiple exercises:
 | EH[nr.] | Endo/Exorotation coronal |
 | EL[nr.] | Endo/Exorotation humerus |
 
-Every recording was done with the FoB (Flock of Birds) system. 
+Every recording was done with the [FoB (Flock of Birds)](https://est-kl.com/manufacturer/ascension/flock-of-birds.html) system. 
 
-This system uses sensors attached to the skin of a patient to record the exact location of a bone using electromagnetic fields. For each recording moment of a single sensor the FoB system stores a 3D matrix with the 3D position relative to the ‘black box’ that creates the electromagnetic fields. This 3D position is saved in plain text as a euler angle / rotation matrix. 
-
-
+This system uses sensors attached to a patient to record the exact location of a bone using electromagnetic fields. For each recording moment of a single sensor the FoB system stores a 3D matrix with the 3D position relative to the ‘black box’ that creates the electromagnetic fields. This 3D position is saved in plain text as a euler angle / rotation matrix. 
 
 <details>
   <summary>_Example data: AB1.txt_</summary>
@@ -183,36 +181,36 @@ I added some trajectory lines and more details to the animation to be more clear
 
 Because of the animation I created, we as a group were able to determined that the elbow angle is so far off a regular angle that we have skip these in future datasets. 
 
-The number that is shown in the visualisation is the original elbow angle `% 360` witch still results in a too wide of range values to represent a normal angle. 
+The number that is shown in the visualization is the original elbow angle `% 360` witch still results in a too wide of range values to represent a normal angle. 
  
 # 3.2 Data exploration
-I have created a file that was able to visualise the data of all catagory's in one plot by using t-SNE. [Link to full explanation of t-SNE](/TechincalDocumentation.md#33-t-SNE)
+I have created a file that was able to visualize the data of all category's in one plot by using t-SNE. [Link to full explanation of t-SNE](/TechincalDocumentation.md#33-t-SNE)
 
 
 ### Results using category 1-3: 
 _t-SNE AB1 Thorax_
 ![t-SNE AB1 Thorax](https://raw.githubusercontent.com/v3rslu1s/Applied-Datascience/master/images/TSNE-Result-AB1-Thorax-l-r.png)
 
-Seen from the images is clear that different groups are present in the data. There are some outliners in a couple catagory's but nothing special. At the moment of creating these images there was not much data-cleaning done (for example removing double exercises and detecting anomolies.)
+Seen from the images is clear that different groups are present in the data. There are some outliners in a couple category's but nothing special. At the moment of creating these images there was not much data-cleaning done (for example removing double exercises and detecting anomalies.)
 
-Also catagory 4 is missing from the dataset in the visualisations. Known was that the recordings from catagory 4 were not converted from raw to euler rotations correctly. This was clearly visible on the following visualisation. 
-The small center in the middle is a zoomed out version of the first two images. We expected the data from catagory 4 to be somewhat comparable to catagory 1-3 but this result shows otherwise. 
+Also category 4 is missing from the dataset in the visualizations. Known was that the recordings from category 4 were not converted from raw to euler rotations correctly. This was clearly visible on the following visualization. 
+The small center in the middle is a zoomed out version of the first two images. We expected the data from category 4 to be somewhat comparable to category 1-3 but this result shows otherwise. 
 
 ### Results using category 1-3 + 4 
-_t-SNE AB1 catagory 4_
-![t-SNE AB1 catagory 4](images/TSNE-Result-AB1-cat4.jpeg)
+_t-SNE AB1 category 4_
+![t-SNE AB1 category 4](images/TSNE-Result-AB1-cat4.jpeg)
 
 # 3.3 Data preparation
 
-1. Because of Data exploration I found the issue with the conversion of catagory 4. Based upon this visualisation the project group choose to remove this outlier until verification that the data is converted correctly.
+1. Because of Data exploration I found the issue with the conversion of category 4. Based upon this visualization the project group choose to remove this outlier until verification that the data is converted correctly.
 
-2. As mentioned above the elbow angles are outliners. They don't fit into the expected values for the dataset. Because of the visualisation I created the the elbow angle is skipped. 
+2. As mentioned above the elbow angles are outliners. They don't fit into the expected values for the dataset. Because of the visualization I created the the elbow angle is skipped. 
 
 3. Methods to create the full dataset can be found in [chapter 4 - creating datasets](#4-Creating-datasets)
 
 # 3.4 Combining raw + converted data
 
-One of the ideas that was always present is to combine the information from rawdata with the converted data. The converded data was only readable by visualsing the plots. However this was hard for us to understand. With the data from the LUMC we were able to combine these two data-sets in one visualisation. With a group partner i have attempted to read both raw / converted values into a matplotlib visualisation to get the best understanding of the data-set that we have. 
+One of the ideas that was always present is to combine the information from raw data with the converted data. The converted data was only readable by visualizing the plots. However this was hard for us to understand. With the data from the LUMC we were able to combine these two data-sets in one visualization. With a group partner I have attempted to read both raw / converted values into a matplotlib visualization to get the best understanding of the data-set that we have. 
 
 ![combined gif](images/animationV1.gif)
 
@@ -232,13 +230,12 @@ Patient data is devided in 5 main exercises (table 1). Physician’s recorded on
 The goal is to train a logistics regression model with a combination of all exercise types.
 To do this we have to solve a time / exercise length problem. Exercises when executed by patients almost never have the same length. A logistics regression model expects the same amount of inputs for every entry in the dataset. We solved this by creating a combination of exercises with a fixed length. 
 
-Timing issue 
+### Timing issue 
 From each exercise we have picked n frames (smaller than the smallest exercise in the whole dataset). We stepped through the exercise with a step size of exercise-length / n. This simple approach leaves us with a static number of frames for each exercise. 
-
 
 In the case of an exercise with 10 frames, we can pick 5 frames from the exercise: 10 / 5 = 2. We pick the following frames from the exercise: 
 
-Creating a single patient 
+### Creating a single patient 
 As said above we have 5 exercise types for each patient. We appended these combinations together in order to create a single row in our dataset. 
 
 | [n frames] | [n frames] | [n frames] | [n frames] | [n frames] |
@@ -270,7 +267,7 @@ In the case of an exercise with 10 frames, we can pick 5 frames from the exercis
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Frame index: | 1 | 2 | 3 | 4 | __5__ | 6 | 7 | 8 | 9 | __10__ |
 
-However this would leave us with unused parts of the exercise. In order to still use all the data for training we created a new method that looks before and after the selected frame (if possible) and extracts these as a new formatted exercise. In the example case its only possible to look before values, this leaves us with two exercise extractions: 
+This would leave us with unused parts of the exercise. In order to still use all the data for training we created a new method that looks before and after the selected frame (if possible) and extracts these as a new formatted exercise. In the example case its only possible to look before values, this leaves us with two exercise extractions: 
 
 |||||__&darr;__|&darr;||||__&darr;__|&darr;|
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -278,16 +275,16 @@ However this would leave us with unused parts of the exercise. In order to still
 
 This method would leave us with more data, and we did not use the same data twice. Since the data consists of movements the values almost always fluctuates. 
 
-Generating the frames is done on exercise level. Doing this won't affact the relation between the patient group and the patient. This allows us to use the same methology as above. Looping again trough patients to find all combinations between exercises for a single patient. 
+Generating the frames is done on exercise level. Doing this won't affect the relation between the patient group and the patient. This allows us to use the same metrology as above. Looping again trough patients to find all combinations between exercises for a single patient. 
 
 
 # 4.3 Images from exercises 
 
-Images are a great way of formatting data. A single pixel could consist out of 3 channels (colors: red, green, blue) with defined values (0 -> 255). Or data-set consists out of sensors placed on a patient. These sensors record in 3 dimentions (x, y, z). A good fit for the 3 channels in an image. 
+Images are a great way of formatting data. A single pixel could consist out of 3 channels (colors: red, green, blue) with defined values (0 -> 255). Or data-set consists out of sensors placed on a patient. These sensors record in 3 dimensions (x, y, z). A good fit for the 3 channels in an image. 
 
 ![pixels-xyz](images/pixels-xyz.png)
 
-There are pretrained neural networks based upon recignising patterns in images. Fitting our data into could introduce these pretrained networks for our model. 
+There are pre-trained neural networks based upon recognizing patterns in images. Fitting our data into could introduce these pre-trained networks for our model. 
 
 To start with I have made a list of bones i want to attach to each row of pixels. For each moment in time a pixel is created with 3 channels. Stacking the pixels next to each other to create a single row. 
 
@@ -317,13 +314,13 @@ _Patient converted into image, enlarged_ -> [original](images/patientimage1.png)
 _Patient converted into image, enlarged_ -> [original](images/patientimage2.png)
 ![patientimage2large](images/patientimage2large.png)
 
-For the first image its clear that the last exercise added (lowest bar with color green present) has a much longer lenght than the other exercises. The colors do not appear to change much over time. But looking at the actual pixel values there is much variation in it. This is probably because of image viewers / screen quality fewing a small image of 8 * 5 pixels. 
+For the first image its clear that the last exercise added (lowest bar with color green present) has a much longer length than the other exercises. The colors do not appear to change much over time. But looking at the actual pixel values there is much variation in it. This is probably because of image viewers / screen quality viewing a small image of 8 * 5 pixels. 
 
 Creating the image for a single patient. To define the color of the pixel i normalized the values of each bone axis to a value between 0 and 1. 
-All values in the exercise recordings are euler angles. By using modulo 360 the values are converted to [0-360]. By deviding these results by 360 we get values between [0-1]. By multiplying these values by 255 we get the  pixel values [0-255].
+All values in the exercise recordings are euler angles. By using modulo 360 the values are converted to [0-360]. By dividing these results by 360 we get values between [0-1]. By multiplying these values by 255 we get the  pixel values [0-255].
 
 ## Additional layers to the image 
-Most images on the web are based upon 3 channels; red green blue. Additional channels are sometimes used for transparacy or other values. In our case a pretrained neural network can take unlimited amount of channels and still interpretate the values together as a image. This means we can add more information to the image. 
+Most images on the web are based upon 3 channels; red green blue. Additional channels are sometimes used for transparency or other values. In our case a pre-trained neural network can take unlimited amount of channels and still interpretate the values together as a image. This means we can add more information to the image. 
 
 **differentiation** 
 
@@ -340,7 +337,7 @@ We pass the signal through a lowpass filter in order to get an clean result. Bas
 
 ### Logistic Regression 
 
-Our data contains movement of a patient. From this movement we want to determen the catagory this patient is in. This is called a classification problem. There a many models to solve classification. Based on the previous groups research we have selected Logistic regression. [They have done extensive research to the differences between models on our dataset.](https://github.com/Lukelumia/Applied-Data-Science). However we have implemented other machine learning techniques in the codebase. These results were very bad and not comparable to logistic regression. 
+Our data contains movement of a patient. From this movement we want to determen the category this patient is in. This is called a classification problem. There a many models to solve classification. Based on the previous groups research we have selected Logistic regression. [They have done extensive research to the differences between models on our dataset.](https://github.com/Lukelumia/Applied-Data-Science). However we have implemented other machine learning techniques in the codebase. These results were very bad and not comparable to logistic regression. 
  
 
 | Model | Accuracy | MCC | LogLoss | RSME | RMSLE |
