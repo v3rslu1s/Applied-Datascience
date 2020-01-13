@@ -398,10 +398,10 @@ We have created a table to output the results of the model. This makes it easy t
 ### What other datascience techniques could we use and (how) can they improve the classification 
 
 #### Datacleaning 
-This year's research group focused much more on the cleaning of the dataset. So that only the actual exercise is left, and shaped in such an way that each exercise starts and ends around the same relative exercise time. (see techinical document for more details about data-cleaning)
+- This year's research group focused much more on the cleaning of the dataset. So that only the actual exercise is left, and shaped in such an way that each exercise starts and ends around the same relative exercise time. (see techinical document for more details about data-cleaning)
 
 #### Data formatting
-We have attempted to load in as much of the data as possible. This means leaving as few features out of the dataset. And keeping the original movement as a whole. 
+- We have attempted to load in as much of the data as possible. This means leaving as few features out of the dataset. And keeping the original movement as a whole. 
 
 ### What parts of the kinematic recordings are contributing? 
 TODO: Looking at results 
