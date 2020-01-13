@@ -126,36 +126,7 @@ _Project file tree, summarized :_
 ```
 
 Throughout the project reading the dataset very pretty easy. Using pandas we were able to load in the csv with `.read_csv()`. We attached numbers to the columns in order to replace those with the representing bone name.
-
-```python
-import pandas as pd
-columns = {
-        0: "thorax_r_x_ext", 1: "thorax_r_y_ax", 2: "thorax_r_z_lat",
-        3: "clavicula_r_y_pro", 4: "clavicula_r_z_ele", 5: "clavicula_r_x_ax",
-        6: "scapula_r_y_pro", 7: "scapula_r_z_lat", 8: "scapula_r_x_tilt",
-        9: "humerus_r_y_plane", 10: "humerus_r_z_ele", 11: "humerus_r_y_ax",
-        12: "ellebooghoek_r",
-        15: "thorax_l_x_ext", 16: "thorax_l_y_ax", 17: "thorax_l_z_lat",
-        18: "clavicula_l_y_pro", 19: "clavicula_l_z_ele", 20: "clavicula_l_x_ax",
-        21: "scapula_l_y_pro", 22: "scapula_l_z_lat", 23: "scapula_l_x_tilt",
-        24: "humerus_l_y_plane", 25: "humerus_l_z_ele", 26: "humerus_l_y_ax",
-        27: "ellebooghoek_l"
-    }
-df = pd.read_csv(".../Category_1/1/AF1.csv", names=list(range(30))
-df = df.rename(columns=columns)
-```
-
-```
-TODO: ## new data-set
-- Matlab
-    - raw + calibration
-    - extracting to csv 
-    - woo angle system changed to lumc standards 
-    - No changes in rotating when a sensor is switched
-- Exercise groups are known
-- Combining exercises based on labels instead of assumptions
-```
-
+ 
 # 3. Visualisation
 For the project group it was the first few weeks hard to understand what data we could work with. In order to get insights into the data for our own understanding, as for the verification / data cleaning I created multiple scripts that were able to read the data an visualize it in different ways. 
 
