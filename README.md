@@ -396,30 +396,30 @@ We have created a table to output the results of the model. This makes it easy t
 # 6. Conclusion
 >The student has discussed the results, illustrated by examples (qualitative analysis)and answers the original research questions based on the findings in this study and has tested the outcomes for statistical significance.
 
-## What datascience techniques should we use? 
+### What datascience techniques should we use? 
 - In our case we used logistic regression based upon the research of the previous group. [refrence](https://github.com/Lukelumia/Applied-Data-Science)
 
-## How can kinematic recordings be reshaped(organized) into a valid/reliable data set. 
+### How can kinematic recordings be reshaped(organized) into a valid/reliable data set. 
 - A combination of different exercises with filtered features defined as a single patient. [Chapter 4.1 Combining animations](#41-Combining-exercises) 
 - Testing future patients by using a single combination of exercises. 
 
-## What other datascience techniques could we use and (how) can they improve the classification 
+### What other datascience techniques could we use and (how) can they improve the classification 
 
-### Datacleaning 
+#### Datacleaning 
 This year's research group focused much more on the cleaning of the dataset. So that only the actual exercise is left, and shaped in such an way that each exercise starts and ends around the same relative exercise time. (see techinical document for more details about data-cleaning)
 
-### Data formatting
+#### Data formatting
 We have attempted to load in as much of the data as possible. This means leaving as few features out of the dataset. And keeping the original movement as a whole. 
 
-## What parts of the kinematic recordings are contributing? 
+### What parts of the kinematic recordings are contributing? 
 TODO: Looking at results 
 
 
-## How is our outcome contributing to the medical domain?(classification/research) 
+### How is our outcome contributing to the medical domain?(classification/research) 
 - In the way of a working machine learning model with 70% accuracy 
 - Our reseach paper to help understanding new research group how to work with kinematic data. 
 
-## Do we validate the reliability of the diagnosis the Datacience techniques made. 
+### Do we validate the reliability of the diagnosis the Datacience techniques made. 
 - Our test / train set is not based upon a random selection of records from our data-set, its based upon individual patient. A single patient used for training could have multiple records in the data-set since it did a combination of exercises. 
 We don't want any of these records to bias the training set if a single combination is used in the train set. Because of this we create a test set with unique patients that have never been seen by the model while training. 
 
