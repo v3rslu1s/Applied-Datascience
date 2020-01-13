@@ -25,7 +25,7 @@ Our research is about using machine learning techniques to classify feature pati
 #### Subquestions
 
 # 1.1 Previous groups 
-The projectgroup of 19/20 is not the first group who contributed to this research. The previous research group that took an interest in this subject has done allot of work to get us started quickly. [https://github.com/Lukelumia/Applied-Data-Science]. They mainly did research to determent what type of machine learning model would fit the data-set produced by the LUMC the best. They created a way to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the data-set. 
+The projectgroup of 19/20 is not the first group who contributed to this research. The previous research group that took an interest in this subject has done allot of work to get us started quickly. [https://github.com/Lukelumia/Applied-Data-Science](https://github.com/Lukelumia/Applied-Data-Science). They mainly did research to determent what type of machine learning model would fit the data-set produced by the LUMC the best. They created a way to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the data-set. 
 
 After reading their full reports the 19/20 project group had some doubts about certain assumptions the group made. Based on this information we contacted the LUMC for clarification. This led to the LUMC sharing more labels on our data-set in order to take some doubts / possible assumptions about the labels of the data-set from the previous group away. This still leaves allot of information to processes, and domain knowledge to gain. The verification of their process took almost the full time of the minor. 
 
@@ -81,9 +81,7 @@ _example patient exercise format (.csv):_
    thorax_r_x_ext  thorax_r_y_ax  thorax_r_z_lat  clavicula_r_y_pro  clavicula_r_z_ele  ...  humerus_l_z_ele  humerus_l_y_ax  elbowangle_l  28  29
 0        6.485206      -4.220661       -1.233433          -15.00546           10.47724  ...         14.79337        46.02733        399.8214   0   0
 1        6.485206      -4.220661       -1.233433          -15.44328           10.46473  ...         14.77317        45.71592        399.3666   0   0
-2        6.485206      -4.220661       -1.233433          -15.42001           10.48047  ...         14.76965        45.32890        399.4807   0   0
-3        6.485206      -4.220661       -1.233433          -15.54270           10.43327  ...         14.86782        45.30117        399.7175   0   0
-4        6.485206      -4.220661       -1.233433          -15.49114           10.93031  ...         15.45898        34.02906        391.7332   0   0
+2        6.485206      -4.220661       -1.233433          -15.42001           10.48047  ...         14.76965        45.32890        399.4807   0   0 
 ```
 
 As being said we have 4 patient groups. Each patient did multiple exercises. The following folder structure is used through the whole project: 
@@ -158,12 +156,6 @@ I have created a file that was able to visualise the data of all catagory's in o
 _t-SNE AB1 Thorax_
 ![t-SNE AB1 Thorax](https://raw.githubusercontent.com/v3rslu1s/Applied-Datascience/master/images/TSNE-Result-AB1-Thorax-l-r.png)
 
-_t-SNE AB1 Thorax left-right_
-![t-SNE AB1 Thorax left-right](images/TSNE-Result-AB1-Thorax.png)
-
-_t-SNE RF1 Thorax_
-![t-SNE RF1 Thorax](https://raw.githubusercontent.com/v3rslu1s/Applied-Datascience/master/images/TSNE-Result-RF-Thorax.png)
-
 Seen from the images is clear that different groups are present in the data. There are some outliners in a couple catagory's but nothing special. At the moment of creating these images there was not much data-cleaning done (for example removing double exercises and detecting anomolies.)
 
 Also catagory 4 is missing from the dataset in the visualisations. Known was that the recordings from catagory 4 were not converted from raw to euler rotations correctly. This was clearly visible on the following visualisation. 
@@ -177,7 +169,7 @@ _t-SNE AB1 catagory 4_
 
 1. Because of Data exploration I found the issue with the conversion of catagory 4. Based upon this visualisation the project group choose to remove this outlier until verification that the data is converted correctly.
 
-2. Also mentioned is the elbow angle that is skipped because of the visualisation. 
+2. As mentioned above the elbow angles are outliners. They don't fit into the expected values for the dataset. Because of the visualisation I created the the elbow angle is skipped. 
 
 # 3.5 Combining raw + converted data
 
@@ -299,6 +291,35 @@ For each of the bone axis we can calculate the difference between values. This m
 We pass the signal through a lowpass filter in order to get an clean result. Based upon these values we can derive the difference and add this to the pixels the same way as we did above. 
 
 
+## 5. Machine Learning 
+
+### Logistic Regression 
+
+Our data contains movement of a patient. From this movement we want to determen the catagory this patient is in. This is called a classification problem. There a many models to solve classification. Based on the previous groups research we have selected Logistic regression. [They have done extensive research to the differences between models on our dataset.](https://github.com/Lukelumia/Applied-Data-Science). However we have implemented other machine learning techniques in the codebase. These results were very bad and not comparable to logistic regression. 
+ 
+
+|Model|Accuracy|MCC|LogLoss|RSME|RMSLE|
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|Logistic Regression|0.690173|0.584366|1.47405|0.556621|0.163916|
+|KMeans|0.720231|0.060499|-------|0.905985|0.392598|
+
+#### Configuring a Model
+
+|||||
+| --- | --- | --- | --- | --- |
+| solver | lbfgs | The default solver of sklearn. Perserves memory by remembering the last iterations to improve gradient descent | [refrence](https://towardsdatascience.com/dont-sweat-the-solver-stuff-aea7cddc3451)
+| max_iter | 2000 | Capping the maximum amount of iterations. This to prevent the model running for too long, since we tested with multiple models this helped us to faster test different configurations. |
+| multi_class | auto | Using sklearns default setting |
+
+#### Training a model
+#### Evaluating a model
+#### Visualizing the outcome of a model (explanatory)
+
+
+
+
+
+
 
 # 13. Future of the project
 ## Argumented Reality 
@@ -327,6 +348,19 @@ There are already developed technology's to get information from a neural networ
 >![ai makes decisions](https://cdn-images-1.medium.com/freeze/max/1000/0*y2TVIsjnZ2cBtRdH?q=20)
 >[https://mc.ai/learning-how-ai-makes-decisions/](https://mc.ai/learning-how-ai-makes-decisions/)
 
+# 9. Personal Development 
+## Datacamp
+
+- [Cleaning Data in Python](/datacamp/)
+- [Importing Data in Python (Part 1)](/datacamp/)
+- [Introduction to Data Visualization in Python](/datacamp/)
+- [Python Data Science Toolbox (Part 1)](/datacamp/)
+- [Python Data Science Toolbox (Part 2)](/datacamp/)
+- [Statistical Thinking in Python (Part 1)](/datacamp/)
+- [Pandas Foundations](/datacamp/)
+
+## Udemy 
+- [Deep Learning with TensorFlow 2.0](https://www.udemy.com/course/machine-learning-with-tensorflow-for-business-intelligence/)
 
 # 14. Scrum Tasks
 - Tasks were not always assniged to a name. 
