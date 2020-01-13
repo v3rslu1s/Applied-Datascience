@@ -6,31 +6,25 @@
 | 1. | [Research](#1-Research) | 
 | 1.1 | | [Previous Groups](#11-Previous-groups) | 
 | 1.2 | | [Project Management](#12-Project-Management) | 
-
-
-1.1 Previous groups
-1.2 project management
-2. Data-set
-3. Visualisation
-3.1 Visualising raw data
-3.2 Data Exploration
-3.3 Data preparation
-4. Creating datasets
-4.1 Combining exercises
-4.2 Extracing more exercises
-4.3 Images from exercises 
-5. Machine Learning
-6. Conclusion
-7. Future of the project
-8. Personal Development
-9. Scrum tasks
-10. Git Commits 
-11. Presentations
-
+| 2. | [Data-set](#2-Data-set) | 
+| 3. | [Visualisation](#3-Visualisation) | 
+| 3.1 | | [Visualising raw data](#31-Visualising-raw-data) | 
+| 3.2 | | [Data Exploration](#32-Data-Exploration) | 
+| 3.3 | | [Data preparation](#33-Data-preparation) | 
+| 4. | [Creating datasets](#4-Creating-datasets) | 
+| 4.1 | | [Combining exercises](#41-Combining-exercises) | 
+| 4.2 | | [Extracting more exercises](#42-Extracting-more-exercises) | 
+| 4.3 | | [Images from exercises](#43-Images-from-exercises) |  
+| 5. | [Machine Learning](#5-Machine-Learning) | 
+| 6. | [Conclusion](#6-Conclusion) | 
+| 7. | [Future of the project](#7-Future-of-the-project) | 
+| 8. | [Personal Development](#8-Personal-Development) | 
+| 9. | [Scrum tasks](#9-Scrum-tasks) | 
+| 10. | [Git Commits](#10-Git-Commits) | 
+| 11. | [Presentations](#11-Presentations) | 
 
 ## More details/missing information can be found in the technical documentation of the project.
 [Applied-DataScience/Technical Documentation](/TechnicalDocumentation.md)
-
 
 # 1. Research
 
@@ -394,10 +388,8 @@ We have created a table to output the results of the model. This makes it easy t
 
 
 # 6. Conclusion
->The student has discussed the results, illustrated by examples (qualitative analysis)and answers the original research questions based on the findings in this study and has tested the outcomes for statistical significance.
-
 ### What datascience techniques should we use? 
-- In our case we used logistic regression based upon the research of the previous group. [refrence](https://github.com/Lukelumia/Applied-Data-Science)
+- In our case we used logistic regression based upon the [research](https://github.com/Lukelumia/Applied-Data-Science) of the previous group. 
 
 ### How can kinematic recordings be reshaped(organized) into a valid/reliable data set. 
 - A combination of different exercises with filtered features defined as a single patient. [Chapter 4.1 Combining animations](#41-Combining-exercises) 
