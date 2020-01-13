@@ -298,7 +298,7 @@ We pass the signal through a lowpass filter in order to get an clean result. Bas
 Our data contains movement of a patient. From this movement we want to determen the catagory this patient is in. This is called a classification problem. There a many models to solve classification. Based on the previous groups research we have selected Logistic regression. [They have done extensive research to the differences between models on our dataset.](https://github.com/Lukelumia/Applied-Data-Science). However we have implemented other machine learning techniques in the codebase. These results were very bad and not comparable to logistic regression. 
  
 
-|Model|Accuracy|MCC|LogLoss|RSME|RMSLE|
+| Model | Accuracy | MCC | LogLoss | RSME | RMSLE |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |Logistic Regression|0.690173|0.584366|1.47405|0.556621|0.163916|
 |KMeans|0.720231|0.060499|-------|0.905985|0.392598|
