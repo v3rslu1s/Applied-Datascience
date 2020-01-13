@@ -46,16 +46,20 @@ Each patient was requested to do multiple exercises:
 
 Every recording was done with the FoB (Flock of Birds) system. 
 
-
 This system uses sensors attached to the skin of a patient to record the exact location of a bone using electromagnetic fields. For each recording moment of a single sensor the FoB system stores a 3D matrix with the 3D position relative to the ‘black box’ that creates the electromagnetic fields. This 3D position is saved in plain text as a euler angle / rotation matrix. 
 
-_AB1.txt_
+
+
+<details>
+  <summary>_Example data: AB1.txt_</summary>
+
 ```
     2  857.25  -41.08 574.18    // sensorid | x y z
          0.84   -0.54   0.01    // euler rotation matrix
          0.54    0.84   0.06    // euler rotation matrix
         -0.04   -0.04   1.00    // euler rotation matrix
 ```  
+</details>
 
 The LUMC created a script that was able to determent the exact position of a bone based upon the sensor location placed on the skin of a patient. 
 
@@ -76,17 +80,22 @@ _Bones recored by FoB:_
 - elbowangle
 
 
-_example patient exercise format (.csv):_
+<details>
+  <summary>_example patient exercise format (.csv):_</summary>
 ```
    thorax_r_x_ext  thorax_r_y_ax  thorax_r_z_lat  clavicula_r_y_pro  clavicula_r_z_ele  ...  humerus_l_z_ele  humerus_l_y_ax  elbowangle_l  28  29
 0        6.485206      -4.220661       -1.233433          -15.00546           10.47724  ...         14.79337        46.02733        399.8214   0   0
 1        6.485206      -4.220661       -1.233433          -15.44328           10.46473  ...         14.77317        45.71592        399.3666   0   0
 2        6.485206      -4.220661       -1.233433          -15.42001           10.48047  ...         14.76965        45.32890        399.4807   0   0 
 ```
+</details>
 
 As being said we have 4 patient groups. Each patient did multiple exercises. The following folder structure is used through the whole project: 
 
-_Project file tree, summarized :_
+
+<details>
+  <summary>_Project file tree, summarized :_</summary>
+
 ```
 .
 ├── Category_1
@@ -122,6 +131,7 @@ _Project file tree, summarized :_
 │   │   └── ...
 │   └── ...
 ```
+</details>
 
 Throughout the project reading the dataset very pretty easy. Using pandas we were able to load in the csv with `.read_csv()`. We attached numbers to the columns in order to replace those with the representing bone name.
  
@@ -242,7 +252,7 @@ This method would leave us with more data, and we did not use the same data twic
 Generating the frames is done on exercise level. Doing this won't affact the relation between the patient group and the patient. This allows us to use the same methology as above. Looping again trough patients to find all combinations between exercises for a single patient. 
 
 
-# 4.4 Images (pictures) from exercises 
+# 4.4 Images from exercises 
 
 Images are a great way of formatting data. A single pixel could consist out of 3 channels (colors: red, green, blue) with defined values (0 -> 255). Or data-set consists out of sensors placed on a patient. These sensors record in 3 dimentions (x, y, z). A good fit for the 3 channels in an image. 
 
@@ -251,6 +261,10 @@ Images are a great way of formatting data. A single pixel could consist out of 3
 There are pretrained neural networks based upon recignising patterns in images. Fitting our data into could introduce these pretrained networks for our model. 
 
 To start with I have made a list of bones i want to attach to each row of pixels. For each moment in time a pixel is created with 3 channels. Stacking the pixels next to each other to create a single row. 
+
+
+<details>
+  <summary>_Table of columns used to define the picture_</summary>
 
 | row index | channel 1 | channel 2 | channel 3 |
 | --- | --- | --- | --- |
@@ -262,6 +276,8 @@ To start with I have made a list of bones i want to attach to each row of pixels
 |6| clavicula_l_y_pro | clavicula_l_z_ele | clavicula_l_x_ax |
 |7| scapula_l_y_pro | scapula_l_z_lat | scapula_l_x_tilt |
 |8| humerus_l_y_plane | humerus_l_z_ele | humerus_l_y_ax| )
+
+</details>
 
 This process results in a bar of 8 pixels. A patient has done 5 exercises, stacking these exercises in a zeroed out array creates the following image
 
@@ -277,7 +293,7 @@ For the first image its clear that the last exercise added (lowest bar with colo
 Creating the image for a single patient. To define the color of the pixel i normalized the values of each bone axis to a value between 0 and 1. 
 All values in the exercise recordings are euler angles. By using modulo 360 the values are converted to [0-360]. By deviding these results by 360 we get values between [0-1]. By multiplying these values by 255 we get the  pixel values [0-255].
 
-## adding additional layers to the image 
+## Additional layers to the image 
 Most images on the web are based upon 3 channels; red green blue. Additional channels are sometimes used for transparacy or other values. In our case a pretrained neural network can take unlimited amount of channels and still interpretate the values together as a image. This means we can add more information to the image. 
 
 **differentiation** 
@@ -306,7 +322,7 @@ Our data contains movement of a patient. From this movement we want to determen 
 ### Configuring a Model
 | hyperparameter | selected option | Description | refrence |
 | --- | --- | --- | --- | 
-| solver | lbfgs | The default solver of sklearn. Perserves memory by remembering the last iterations to improve gradient descent | [refrence](https://towardsdatascience.com/dont-sweat-the-solver-stuff-aea7cddc3451)
+| solver | lbfgs | The default solver of sklearn. Perserves memory by remembering the last iterations to improve gradient descent | [link](https://towardsdatascience.com/dont-sweat-the-solver-stuff-aea7cddc3451)
 | max_iter | 2000 | Capping the maximum amount of iterations. This to prevent the model running for too long, since we tested with multiple models this helped us to faster test different configurations. |
 | multi_class | auto | Using sklearns default setting |
 
@@ -342,6 +358,33 @@ We have created a table to output the results of the model. This makes it easy t
 
 
 
+# 8. Conclusion
+> The student compares several models and additionally explains the differences between the models.
+> The student explains why the chosen configuration is reasonable (for instance using relevant literature)
+> The student has visualized the results both quantatively in a plot and where applicable qualitatively using examples.
+
+
+>The student has discussed the results, illustrated by examples (qualitative analysis)and answers the original research questions based on the findings in this study and has tested the outcomes for statistical significance.
+
+The projectgroup of 19/20 is not the first group who contributes to this research. The previous groups attempted to solve the same issue. However the results for this years research is much lower in accuracy than the previous years. This is because of the assumptions the previous group made. 
+
+## Unlabeled data
+The previous group did not have labels on their exercises. A patient was known to be in a specific patientgroup. However it was unknow what exercises the patient actually did. When this years projectgroup researched the dataset with labels received from the LUMC mistakes from the previous group were found. 
+
+In certain cases the phasicians choose to make extra recordings from patients. These extra recordings were labeled as default recordings by visual inspection. So could tying shoelaces be labeled as doing a AF exercise. 
+
+These recordings were only done by specific patient groups. This could potentially bias the model into learning that tying shoelaces always fits to patient group x. 
+
+## Datacleaning 
+This year's research group focused much more on the cleaning of the dataset. So that only the actual exercise is left, and shaped in such an way that each exercise starts and ends around the same relative exercise time. 
+
+## Data formatting
+We have attempted to load in as much of the data as possible. This means leaving as few features out of the dataset. And keeping the original movement as a whole. 
+
+## Results 
+We now understand that the model is very sensitive to noise data. Patient groups contained in the past certain characteristic movements/exercises on witch the model possibly has attached their decicion making. Instead of looking at the underlying issue (for example the painfull arc) it possibly looked at the differences in exercise. Different physician recorded different patient groups. Removing the physician characteristic from the data set resulted into a worse result. 
+
+The result could also be worse because of the lack of data. Cleaning the dataset and dropping certain exercises because of relevance causes a drop of input values. More recordings from the LUMC could contribute to a better performing model. 
 
 
 # 13. Future of the project
@@ -349,11 +392,15 @@ We have created a table to output the results of the model. This makes it easy t
 Mobile bodytracking is possible by using Apple's [ARKit](https://developer.apple.com/augmented-reality/arkit/): 
 Apple presented a example for their developers on WWDC where they are [bringing people into AR](https://developer.apple.com/videos/play/wwdc2019/607). Implementing this project in wide scale available devices such as the iPhone make the work accesable for normal people. It could also provide large data-sets for physician and datascientist to do research on. Results could also be stored privatly in [HealthKit](https://developer.apple.com/healthkit/)
 
+<details>
+  <summary>Details, Links, Images</summary>
+
 >![People Occlusion](https://multitudes.github.io/assets/img/arkit3/4.png)
 >[_picture from Laurent Brusa - Introducing-ARKit3_](https://multitudes.github.io/2019/07/Introducing-ARKit3.html)
 
 >![3D Motion Capture](https://multitudes.github.io/assets/img/arkit3/10.png)
 >[_picture from Laurent Brusa - Introducing-ARKit3_](https://multitudes.github.io/2019/07/Introducing-ARKit3.html)
+</details>
 
 ## Neural Networks
 Seeing the power and the avaiablility of high quality pretrained networks i would really like to see what a model could find in a result. 
@@ -365,11 +412,15 @@ If in the feature a research group would be able to create a high functioning ne
 
 There are already developed technology's to get information from a neural network.
 
+<details>
+  <summary>Details, Links, Images</summary>
+
 >![understanding cnn](https://miro.medium.com/max/960/1*cA9BSngo5Jgzc76CJtKJaA.jpeg)
 >[https://towardsdatascience.com/understanding-your-convolution-network-with-visualizations-a4883441533b](https://towardsdatascience.com/understanding-your-convolution-network-with-visualizations-a4883441533b)
 
 >![ai makes decisions](https://cdn-images-1.medium.com/freeze/max/1000/0*y2TVIsjnZ2cBtRdH?q=20)
 >[https://mc.ai/learning-how-ai-makes-decisions/](https://mc.ai/learning-how-ai-makes-decisions/)
+</details>
 
 # 9. Personal Development 
 ## Datacamp
@@ -386,12 +437,18 @@ There are already developed technology's to get information from a neural networ
 - [Deep Learning with TensorFlow 2.0](https://www.udemy.com/course/machine-learning-with-tensorflow-for-business-intelligence/)
 
 # 14. Scrum Tasks
+The list of task I have been working on is small representation of all the work I have done: 
 - Tasks were not always assniged to a name. 
 - Tasks were not always written down in DevOps
 
-|||||||||
-| --- | --- | --- | --- | --- |  --- |  --- | --- |
+
 |ID|Work Item Type|Title|State|Area Path|Tags|Comment Count|Changed Date
+| --- | --- | --- | --- | --- |  --- |  --- | --- |
+|.|.|.|.|.|.|.|.
+<details>
+  <summary></summary>
+|ID|Work Item Type|Title|State|Area Path|Tags|Comment Count|Changed Date
+| --- | --- | --- | --- | --- |  --- |  --- | --- |
 |178|Task|Data: Combinations|Done|Data Science| |0|7-1-2020 14:06
 |77|Task|Read through code of Matlab to see if new information could be added to csv (entropy etc)|Done|Data Science| |0|7-1-2020 13:01
 |73|Task|Convert raw patient data to CSV with Matlab|Done|Data Science| |0|7-1-2020 12:55
@@ -413,7 +470,8 @@ There are already developed technology's to get information from a neural networ
 |39|Task|Create tool to visualize the cleaned data|Done|Data Science| |0|30-9-2019 10:18
 |28|Task|Create animated visualisation of Raw data file|Done|Data Science| |0|16-9-2019 09:10
 |15|Task|Eddie|Done|Data Science| |0|6-9-2019 09:48
- 
+</details>
+
 # 15. Git Commits
 ![commits](https://ms-vsts.gallerycdn.vsassets.io/extensions/ms-vsts/team/1.161.0/1573137504755/Microsoft.VisualStudio.Services.Icons.Default)
 
