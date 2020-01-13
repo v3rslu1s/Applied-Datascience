@@ -48,8 +48,12 @@ Our research is about using machine learning techniques to classify feature pati
 
 #### Subquestions
 
-TODO: 
-
+- What datascience techniques should we use? 
+- How can kinematic recordings be reshaped(organized) into a valid/reliable data set. 
+- What other datascience techniques could we use and (how) can they improve the classification 
+- What parts of the kinematic recordings are contributing? 
+- Do we validate the reliability of the diagnosis the Datacience techniques made. 
+- How is our outcome contributing to the medical domain?(classification/research) 
 
 # 1.1 Previous groups 
 The projectgroup of 19/20 is not the first group who contributed to this research. [The previous research group](https://github.com/Lukelumia/Applied-Data-Science) that took an interest in this subject has done allot of work to get us started quickly. They mainly did research to determent what type of machine learning model would fit the data-set produced by the LUMC the best. They created a way to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the data-set. 
@@ -390,33 +394,46 @@ We have created a table to output the results of the model. This makes it easy t
 
 
 # 6. Conclusion
-> The student compares several models and additionally explains the differences between the models.
-> The student explains why the chosen configuration is reasonable (for instance using relevant literature)
-> The student has visualized the results both quantatively in a plot and where applicable qualitatively using examples.
-
-
 >The student has discussed the results, illustrated by examples (qualitative analysis)and answers the original research questions based on the findings in this study and has tested the outcomes for statistical significance.
 
-The projectgroup of 19/20 is not the first group who contributes to this research. The previous groups attempted to solve the same issue. However the results for this years research is much lower in accuracy than the previous years. This is because of the assumptions the previous group made. 
+## What datascience techniques should we use? 
+- In our case we used logistic regression based upon the research of the previous group. [refrence](https://github.com/Lukelumia/Applied-Data-Science)
 
-## Unlabeled data
-The previous group did not have labels on their exercises. A patient was known to be in a specific patientgroup. However it was unknow what exercises the patient actually did. When this years projectgroup researched the dataset with labels received from the LUMC mistakes from the previous group were found. 
+## How can kinematic recordings be reshaped(organized) into a valid/reliable data set. 
+- A combination of different exercises with filtered features defined as a single patient. [Chapter 4.1 Combining animations](#41-Combining-exercises) 
+- Testing future patients by using a single combination of exercises. 
 
-In certain cases the phasicians choose to make extra recordings from patients. These extra recordings were labeled as default recordings by visual inspection. So could tying shoelaces be labeled as doing a AF exercise. 
+## What other datascience techniques could we use and (how) can they improve the classification 
 
-These recordings were only done by specific patient groups. This could potentially bias the model into learning that tying shoelaces always fits to patient group x. 
+### Datacleaning 
+This year's research group focused much more on the cleaning of the dataset. So that only the actual exercise is left, and shaped in such an way that each exercise starts and ends around the same relative exercise time. (see techinical document for more details about data-cleaning)
 
-## Datacleaning 
-This year's research group focused much more on the cleaning of the dataset. So that only the actual exercise is left, and shaped in such an way that each exercise starts and ends around the same relative exercise time. 
-
-## Data formatting
+### Data formatting
 We have attempted to load in as much of the data as possible. This means leaving as few features out of the dataset. And keeping the original movement as a whole. 
 
-## Results 
+## What parts of the kinematic recordings are contributing? 
+TODO: Looking at results 
+
+
+## How is our outcome contributing to the medical domain?(classification/research) 
+- In the way of a working machine learning model with 70% accuracy 
+- Our reseach paper to help understanding new research group how to work with kinematic data. 
+
+## Do we validate the reliability of the diagnosis the Datacience techniques made. 
+- Our test / train set is not based upon a random selection of records from our data-set, its based upon individual patient. A single patient used for training could have multiple records in the data-set since it did a combination of exercises. 
+We don't want any of these records to bias the training set if a single combination is used in the train set. Because of this we create a test set with unique patients that have never been seen by the model while training. 
+
+- The previous group did not have labels on their exercises. A patient was known to be in a specific patientgroup. However it was unknow what exercises the patient actually did. When this years projectgroup researched the dataset with labels received from the LUMC mistakes from the previous group were found. 
+
+- In certain cases the phasicians choose to make extra recordings from patients. These extra recordings were labeled as default recordings by visual inspection. So could tying shoelaces be labeled as doing a AF exercise. 
+These recordings were only done by specific patient groups. This could potentially bias the model into learning that tying shoelaces always fits to patient group x. 
+The projectgroup of 19/20 is not the first group who contributes to this research. The previous groups attempted to solve the same issue. However the results for this years research is much lower in accuracy than the previous years. This is because of the assumptions the previous group made. 
+
+**To what extend and in what way, can different (unsupervised) data science techniques be used on kinematic recordings to contribute to a more valid and more reliable diagnosis, made by a doctor, on shoulder disability.**
+
 We now understand that the model is very sensitive to noise data. Patient groups contained in the past certain characteristic movements/exercises on witch the model possibly has attached their decicion making. Instead of looking at the underlying issue (for example the painfull arc) it possibly looked at the differences in exercise. Different physician recorded different patient groups. Removing the physician characteristic from the data set resulted into a worse result. 
 
 The result could also be worse because of the lack of data. Cleaning the dataset and dropping certain exercises because of relevance causes a drop of input values. More recordings from the LUMC could contribute to a better performing model. 
-
 
 # 7. Future of the project
 ## Argumented Reality 
