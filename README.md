@@ -171,7 +171,8 @@ For the project group it was the first few weeks hard to understand what data we
 # 3.1 Visualising raw data
 I have created a class that was able to visualise raw data (before convertion to relative euler angels). [Link to full explanation of raw data](/TechincalDocumentation.md#31-Visualising-raw-data)
 
-I first created a skeleton of each of the bones in 3D environment 
+I first created a skeleton of each of the bones in 3D environment. 
+
 ![skeleton from raw data](https://i.snipboard.io/GHBKQ5.jpg "Skeleton from raw data")
 
 After this i started putting this code in a animation based on matplotlib. 
