@@ -8,6 +8,26 @@
 | 1.2 | | [Project Management](#12-Project-Management) | 
 
 
+1.1 Previous groups
+1.2 project management
+2. Data-set
+3. Visualisation
+3.1 Visualising raw data
+3.2 Data Exploration
+3.3 Data preparation
+4. Creating datasets
+4.1 Combining exercises
+4.2 Extracing more exercises
+4.3 Images from exercises 
+5. Machine Learning
+6. Conclusion
+7. Future of the project
+8. Personal Development
+9. Scrum tasks
+10. Git Commits 
+11. Presentations
+
+
 ## More details/missing information can be found in the technical documentation of the project.
 [Applied-DataScience/Technical Documentation](/TechnicalDocumentation.md)
 
@@ -32,13 +52,14 @@ TODO:
 
 
 # 1.1 Previous groups 
-The projectgroup of 19/20 is not the first group who contributed to this research. The previous research group that took an interest in this subject has done allot of work to get us started quickly. [https://github.com/Lukelumia/Applied-Data-Science](https://github.com/Lukelumia/Applied-Data-Science). They mainly did research to determent what type of machine learning model would fit the data-set produced by the LUMC the best. They created a way to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the data-set. 
+The projectgroup of 19/20 is not the first group who contributed to this research. [The previous research group](https://github.com/Lukelumia/Applied-Data-Science) that took an interest in this subject has done allot of work to get us started quickly. They mainly did research to determent what type of machine learning model would fit the data-set produced by the LUMC the best. They created a way to visualize the data and figure out what parts of the exercise are possibly leading to worse classification of the data. They also created an approach to increase the data-set. 
 
 After reading their full reports the 19/20 project group had some doubts about certain assumptions the group made. Based on this information we contacted the LUMC for clarification. This led to the LUMC sharing more labels on our data-set in order to take some doubts / possible assumptions about the labels of the data-set from the previous group away. This still leaves allot of information to processes, and domain knowledge to gain. The verification of their process took almost the full time of the minor. 
 
 # 1.2 Project Management
 For our research we had to use SCRUM. This approach is not commonly used for research projects. However in our project group it worked good. After a few weeks reading / understanding the work of the previous group we were able sub questions (issues) building up to a main question. Each issue was built upon multiple tasks that were shared over the project group. All of this was implemented in Azure Dev Ops.  
 
+All my assigned task can be found at [Scrum Tasks](#9-Scrum-Tasks)
 # 2. Data-set
 Physicians requested patients back in 4 groups. 
 Each patient was requested to do multiple exercises: 
@@ -166,7 +187,7 @@ Because of the animation I created, we as a group were able to determined that t
 
 The number that is shown in the visualisation is the original elbow angle `% 360` witch still results in a too wide of range values to represent a normal angle. 
  
-# 3.3 Data exploration
+# 3.2 Data exploration
 I have created a file that was able to visualise the data of all catagory's in one plot by using t-SNE. [Link to full explanation of t-SNE](/TechincalDocumentation.md#33-t-SNE)
 
 
@@ -183,19 +204,21 @@ The small center in the middle is a zoomed out version of the first two images. 
 _t-SNE AB1 catagory 4_
 ![t-SNE AB1 catagory 4](images/TSNE-Result-AB1-cat4.jpeg)
 
-# 3.4 Data preparation
+# 3.3 Data preparation
 
 1. Because of Data exploration I found the issue with the conversion of catagory 4. Based upon this visualisation the project group choose to remove this outlier until verification that the data is converted correctly.
 
 2. As mentioned above the elbow angles are outliners. They don't fit into the expected values for the dataset. Because of the visualisation I created the the elbow angle is skipped. 
 
-# 3.5 Combining raw + converted data
+3. Methods to create the full dataset can be found in [chapter 4 - creating datasets](#4-Creating-datasets)
+
+# 3.4 Combining raw + converted data
 
 One of the ideas that was always present is to combine the information from rawdata with the converted data. The converded data was only readable by visualsing the plots. However this was hard for us to understand. With the data from the LUMC we were able to combine these two data-sets in one visualisation. With a group partner i have attempted to read both raw / converted values into a matplotlib visualisation to get the best understanding of the data-set that we have. 
 
 ![combined gif](images/animationV1.gif)
 
-
+# 4 Creating datasets
 # 4.1 Combining exercises
 
 Patient data is devided in 5 main exercises (table 1). Physician’s recorded one or more exercises each category from a single patient. 
@@ -260,7 +283,7 @@ This method would leave us with more data, and we did not use the same data twic
 Generating the frames is done on exercise level. Doing this won't affact the relation between the patient group and the patient. This allows us to use the same methology as above. Looping again trough patients to find all combinations between exercises for a single patient. 
 
 
-# 4.4 Images from exercises 
+# 4.3 Images from exercises 
 
 Images are a great way of formatting data. A single pixel could consist out of 3 channels (colors: red, green, blue) with defined values (0 -> 255). Or data-set consists out of sensors placed on a patient. These sensors record in 3 dimentions (x, y, z). A good fit for the 3 channels in an image. 
 
@@ -366,7 +389,7 @@ We have created a table to output the results of the model. This makes it easy t
 
 
 
-# 8. Conclusion
+# 6. Conclusion
 > The student compares several models and additionally explains the differences between the models.
 > The student explains why the chosen configuration is reasonable (for instance using relevant literature)
 > The student has visualized the results both quantatively in a plot and where applicable qualitatively using examples.
@@ -395,7 +418,7 @@ We now understand that the model is very sensitive to noise data. Patient groups
 The result could also be worse because of the lack of data. Cleaning the dataset and dropping certain exercises because of relevance causes a drop of input values. More recordings from the LUMC could contribute to a better performing model. 
 
 
-# 13. Future of the project
+# 7. Future of the project
 ## Argumented Reality 
 Mobile bodytracking is possible by using Apple's [ARKit](https://developer.apple.com/augmented-reality/arkit/): 
 Apple presented a example for their developers on WWDC where they are [bringing people into AR](https://developer.apple.com/videos/play/wwdc2019/607). Implementing this project in wide scale available devices such as the iPhone make the work accesable for normal people. It could also provide large data-sets for physician and datascientist to do research on. Results could also be stored privatly in [HealthKit](https://developer.apple.com/healthkit/)
@@ -430,7 +453,7 @@ There are already developed technology's to get information from a neural networ
 >[https://mc.ai/learning-how-ai-makes-decisions/](https://mc.ai/learning-how-ai-makes-decisions/)
 </details>
 
-# 9. Personal Development 
+# 8. Personal Development 
 ## Datacamp
 
 - [Cleaning Data in Python](/datacamp/)
@@ -444,17 +467,16 @@ There are already developed technology's to get information from a neural networ
 ## Udemy 
 - [Deep Learning with TensorFlow 2.0](https://www.udemy.com/course/machine-learning-with-tensorflow-for-business-intelligence/)
 
-# 14. Scrum Tasks
+# 9. Scrum Tasks
 The list of task I have been working on is small representation of all the work I have done: 
 - Tasks were not always assniged to a name. 
 - Tasks were not always written down in DevOps
 
 
 |ID|Work Item Type|Title|State|Area Path|Tags|Comment Count|Changed Date
-| --- | --- | --- | --- | --- |  --- |  --- | --- |
-|.|.|.|.|.|.|.|.
+| --- | --- | --- | --- | --- |  --- |  --- | --- | 
 <details>
-  <summary></summary>
+  <summary>show table content...</summary>
 |ID|Work Item Type|Title|State|Area Path|Tags|Comment Count|Changed Date
 | --- | --- | --- | --- | --- |  --- |  --- | --- |
 |178|Task|Data: Combinations|Done|Data Science| |0|7-1-2020 14:06
@@ -480,7 +502,15 @@ The list of task I have been working on is small representation of all the work 
 |15|Task|Eddie|Done|Data Science| |0|6-9-2019 09:48
 </details>
 
-# 15. Git Commits
+# 10. Git Commits
 ![commits](https://ms-vsts.gallerycdn.vsassets.io/extensions/ms-vsts/team/1.161.0/1573137504755/Microsoft.VisualStudio.Services.Icons.Default)
 
 [Git Commits.md](/Gitcommits.md) 
+
+# 11. Presentations
+Some of the powerpoint presentations I used whie presenting with a fellow group member. I coudn't find all dates i presented to the group. This list needs to be extended. 
+- [Week 2](/presentations/)
+- [Week 3](/presentations/)
+- [Week 10](/presentations/)
+- [Week 14](/presentations/)
+- [External Zoetermeer](/presentations/)
