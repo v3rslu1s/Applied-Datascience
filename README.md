@@ -304,7 +304,7 @@ Our data contains movement of a patient. From this movement we want to determen 
 |KMeans|0.720231|0.060499|-------|0.905985|0.392598|
 
 ### Configuring a Model
-| hyperparameter | selected option | Description | refrence
+| hyperparameter | selected option | Description | refrence |
 | --- | --- | --- | --- | --- |  
 | solver | lbfgs | The default solver of sklearn. Perserves memory by remembering the last iterations to improve gradient descent | [refrence](https://towardsdatascience.com/dont-sweat-the-solver-stuff-aea7cddc3451) |
 | max_iter | 2000 | Capping the maximum amount of iterations. This to prevent the model running for too long, since we tested with multiple models this helped us to faster test different configurations. |
