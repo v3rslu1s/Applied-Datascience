@@ -483,13 +483,22 @@ The list of task I have been working on is small representation of all the work 
 - Tasks were not always written down in DevOps
 
 
+
+|||||||||
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+|178|Task|Data: Combinations|Done|Data Science| |0|7-1-2020 14:06 |
+|77|Task|Read through code of Matlab to see if new information could be added to csv (entropy etc)|Done|Data Science| |0|7-1-2020 13:01
+|73|Task|Convert raw patient data to CSV with Matlab|Done|Data Science| |0|7-1-2020 12:55
+|151|Task|Running all configs with different ml models|Doing|Data Science| |0|16-12-2019 13:41
+
+
 |ID|Work Item Type|Title|State|Area Path|Tags|Comment Count|Changed Date |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 <details>
   <summary>show table content...</summary>
 
-||||||||  
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|||||||||  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | 
 |178|Task|Data: Combinations|Done|Data Science| |0|7-1-2020 14:06 |
 |77|Task|Read through code of Matlab to see if new information could be added to csv (entropy etc)|Done|Data Science| |0|7-1-2020 13:01
 |73|Task|Convert raw patient data to CSV with Matlab|Done|Data Science| |0|7-1-2020 12:55
