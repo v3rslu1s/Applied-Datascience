@@ -488,7 +488,7 @@ The list of task I have been working on is small representation of all the work 
 <details>
   <summary>show table content...</summary>
 
-|||||||||
+|ID|Work Item Type|Title|State|Area Path|Tags|Comment Count|Changed Date |
 | --- | --- | --- | --- | --- | --- | --- | --- | 
 |178|Task|Data: Combinations|Done|Data Science| |0|7-1-2020 14:06 
 |77|Task|Read through code of Matlab to see if new information could be added to csv (entropy etc)|Done|Data Science| |0|7-1-2020 13:01
