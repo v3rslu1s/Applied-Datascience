@@ -24,7 +24,7 @@
 | 11. | [Presentations](#11-Presentations) | 
 
 ## More details/missing information can be found in the technical documentation of the project.
-[Applied-DataScience/Technical Documentation](/TechnicalDocumentation.md)
+[Applied-DataScience/Technical Documentation](/TechincalDocumentation.md)
 
 # 1. Research
 
@@ -400,8 +400,8 @@ We have created a table to output the results of the model. This makes it easy t
 #### Data formatting
 - We have attempted to load in as much of the data as possible. This means leaving as few features out of the dataset. And keeping the original movement as a whole. 
 
-### What parts of the kinematic recordings are contributing? 
-TODO: Looking at results 
+<!-- ### What parts of the kinematic recordings are contributing? 
+TODO: Looking at results  -->
 
 
 ### How is our outcome contributing to the medical domain?(classification/research) 
@@ -525,3 +525,5 @@ Some of the powerpoint presentations I used whie presenting with a fellow group 
 - [Week 10](/presentations/)
 - [Week 14](/presentations/)
 - [External Zoetermeer](/presentations/)
+
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2Fv3rslu1s%2FApplied-Datascience)
