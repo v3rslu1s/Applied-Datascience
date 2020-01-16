@@ -527,8 +527,6 @@ Some of the powerpoint presentations I used whie presenting with a fellow group 
 - [Week 14](/presentations/)
 - [External Zoetermeer](/presentations/)
 
-![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2Fv3rslu1s%2FApplied-Datascience)
-
 # 12. Reflection 
 My reflection can be found [here](https://dehaagsehogeschool-my.sharepoint.com/:w:/g/personal/19132565_student_hhs_nl/EectBJ2YDvJDoRgQc2MzpB8BS6P01xHytZjW76cRv0ezKw?e=kHLgAp) document is only available for people within De Haagse Hogeschool with this url. Please contact me if you cannot read this document. 
 
@@ -538,3 +536,6 @@ I have written most part of the:
 - Methods: Configuration of hyper parameters in finding the best inputvector for composing an input vector for kinematic recordings 
 - Methods: Dropping the elbow angles 
 - Reframing text: techniques / methods
+
+
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2Fv3rslu1s%2FApplied-Datascience)
