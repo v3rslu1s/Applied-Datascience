@@ -1,8 +1,8 @@
 # Applied DataScience - Ortho Eyes
 ### Cooperation between LUMC Laboratorium of Kinematics en Neuromechanics (LK&N) and The Hague University of Applied Sciences. 
 
-| # | Chapter | Paragraph | Description |
-| --- | --- | --- | --- |
+| # | Chapter | Paragraph | 
+| --- | --- | --- | 
 | 1. | [Research](#1-Research) | 
 | 1.1 | | [Previous Groups](#11-Previous-groups) | 
 | 1.2 | | [Project Management](#12-Project-Management) | 
@@ -23,6 +23,7 @@
 | 10. | [Git Commits](#10-Git-Commits) | 
 | 11. | [Presentations](#11-Presentations) | 
 | 12. | [Reflection](#12-Reflection) | 
+| 13. | [Paper contribution](#13-Paper-contribution)
 
 ## More details/missing information can be found in the technical documentation of the project.
 [Applied-DataScience/Technical Documentation](/TechincalDocumentation.md)
@@ -530,7 +531,7 @@ Some of the powerpoint presentations I used whie presenting with a fellow group 
 # 12. Reflection 
 My reflection can be found [here](https://dehaagsehogeschool-my.sharepoint.com/:w:/g/personal/19132565_student_hhs_nl/EectBJ2YDvJDoRgQc2MzpB8BS6P01xHytZjW76cRv0ezKw?e=kHLgAp) document is only available for people within De Haagse Hogeschool with this url. Please contact me if you cannot read this document. 
 
-# 13. Paper Contribution
+# 13. Paper contribution
 I have written most part of the: 
 - Discussion: (1, 2, 3, 4)
 - Methods: Configuration of hyper parameters in finding the best inputvector for composing an input vector for kinematic recordings 
