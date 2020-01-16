@@ -531,3 +531,10 @@ Some of the powerpoint presentations I used whie presenting with a fellow group 
 
 # 12. Reflection 
 My reflection can be found [here](https://dehaagsehogeschool-my.sharepoint.com/:w:/g/personal/19132565_student_hhs_nl/EectBJ2YDvJDoRgQc2MzpB8BS6P01xHytZjW76cRv0ezKw?e=kHLgAp) document is only available for people within De Haagse Hogeschool with this url. Please contact me if you cannot read this document. 
+
+# 13. Paper Contribution
+I have written most part of the: 
+- Discussion: (1, 2, 3, 4)
+- Methods: Configuration of hyper parameters in finding the best inputvector for composing an input vector for kinematic recordings 
+- Methods: Dropping the elbow angles 
+- Reframing text: techniques / methods
