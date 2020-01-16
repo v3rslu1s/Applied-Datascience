@@ -28,6 +28,8 @@
 ## More details/missing information can be found in the technical documentation of the project.
 [Applied-DataScience/Technical Documentation](/TechincalDocumentation.md)
 
+Student Nr: __19132565__
+
 # 1. Research
 
 ### Context
